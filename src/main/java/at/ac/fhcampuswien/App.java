@@ -19,7 +19,7 @@ public class App extends Application {
         btn.setOnAction( (event) -> Platform.exit() );
         Pane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 150));
+        primaryStage.setScene(new Scene(root, 720, 480));
         primaryStage.show();
     }
 }
