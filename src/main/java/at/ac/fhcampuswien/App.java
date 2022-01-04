@@ -9,6 +9,9 @@ import javafx.stage.*;
 public class App extends Application {
     public static void main(String[] args){
         launch(args);
+
+        // Test: point Consturctor can be called in App
+        Point r3 = new Point(321,400);
     }
 
     @Override
