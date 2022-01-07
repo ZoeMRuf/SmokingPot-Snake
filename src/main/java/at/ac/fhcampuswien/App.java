@@ -45,5 +45,7 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        //Hallo wie geht es euch
+
     }
 }
