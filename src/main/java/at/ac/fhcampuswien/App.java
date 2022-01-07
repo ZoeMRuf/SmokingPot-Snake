@@ -4,25 +4,46 @@ import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.*;
 
 public class App extends Application {
+
+    //Alle Variablen die wir später brauchen
+    public static Snake snake;
+    public static Food food;
+    public static GameOver gameOver;
+    public static int GameSize = 480;
+
+
+
+    //GUI Variablen
+    private static Pane pane;
+    private static Scene scene;
+    private static GameOver gameOverScene; // To show "GameOver"
+
+
     public static void main(String[] args){
         launch(args);
-
-        // Test: point Consturctor can be called in App
-        Point r3 = new Point(321,400);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Hello JavaFX!");
-        btn.setOnAction( (event) -> Platform.exit() );
-        Pane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 720, 480));
+
+        //Pane = Leinwand = Hintergrundfenster
+        pane = new Pane();
+        scene = new Scene(pane,GameSize,GameSize);
+        scene.setFill(Color.rgb(0,0,0));
+
+        snake = new Snake();
+        pane.getChildren().addAll(Snake.getSnakeLength());
+
+
+
+        // Damit es auch etwas anzeigt
+        primaryStage.setTitle("S N A K E");
+        primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 }
