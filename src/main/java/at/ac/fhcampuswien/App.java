@@ -16,14 +16,13 @@ public class App extends Application {
     public static int GameSize = 480;
 
 
-
     //GUI Variablen
-    private static Pane pane;
+    private static Pane root;
     private static Scene scene;
     private static GameOver gameOverScene; // To show "GameOver"
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -31,13 +30,18 @@ public class App extends Application {
     public void start(Stage primaryStage) {
 
         //Pane = Leinwand = Hintergrundfenster
-        pane = new Pane();
-        scene = new Scene(pane,GameSize,GameSize);
-        scene.setFill(Color.rgb(0,0,0));
+        root = new Pane();
+        scene = new Scene(root, GameSize, GameSize);
+        scene.setFill(Color.rgb(0, 0, 0));
 
         snake = new Snake();
-        pane.getChildren().addAll(Snake.getSnakeLength());
+        root.getChildren().addAll(snake.getSnakeLength());
+        /*
+        Snake.nowSnakeSize++;
+        snake.plusSnakeSize();
+        root.getChildren().addAll(snake.getSnakeLength());
 
+         */
 
 
         // Damit es auch etwas anzeigt
@@ -45,7 +49,6 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //Hallo wie geht es euch
 
     }
 }
