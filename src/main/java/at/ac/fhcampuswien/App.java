@@ -14,12 +14,10 @@ public class App extends Application {
     public static GameOver gameOver;
     public static int GameSize = 480;
 
-
     //GUI Variablen
     private static Pane root;
     private static Scene scene;
     private static GameOver gameOverScene; // To show "GameOver"
-
 
     public static void main(String[] args) {
         launch(args);
@@ -28,7 +26,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        //Pane = Leinwand = Hintergrundfenster
+        //Objekts that need to be created
         root = new Pane();
         scene = new Scene(root, GameSize, GameSize);
         scene.setFill(Color.rgb(0, 0, 0));
@@ -36,18 +34,12 @@ public class App extends Application {
         snake = new Snake();
         root.getChildren().addAll(snake.getSnakeLengthArr());
 
-        //snake.addBodyPart();
-        //root.getChildren().addAll(snake.getSnakeLengthArr());
-
-        // Damit es auch etwas anzeigt
+        //to display our game
         primaryStage.setTitle("S N A K E");
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-
-
         //snake gets longer
-        snake.setBody(root);
+        snake.addBodyPart(root);
     }
 }

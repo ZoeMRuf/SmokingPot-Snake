@@ -46,61 +46,32 @@ public class Snake extends Node {
         return snakeLengthArr;
     }
 
-
-    /*
-    public void addBodyPart() {
-
-        this.snakeLengthArr = new Rectangle[snakeLengthArr.length + 1];
-
-        Rectangle bodyPart = new Rectangle();
-        bodyPart.setFill(bodyColor);
-        bodyPart.setHeight(gridSize - 1);
-        bodyPart.setWidth(gridSize - 1);
-
-        for (int i = 0; i < snakeLengthArr.length-1; i++) {
-            this.snakeLengthArr[i] = snakeLengthArr[i];
-        }
-
-        bodyPart.setX(gridSize * (nowSnakeSize - 1) - snakeLengthArr.length * gridSize);
-
-        this.snakeLengthArr[snakeLengthArr.length-1] = bodyPart;
-    }
-
-     */
-
-
-    //warum ist da ne psvm ????
-
-    /*
-    public static void main(String[] args) {
-        Snake s = new Snake();
-        System.out.println(s.getSnakeLengthArr().length);
-        //s.addBodyPart();
-        System.out.println(s.getSnakeLengthArr().length);
-    }
-
-     */
-
-
-    //if snake eats - body + 1
-    public void setBody(Pane pane) {
-
+    //add a new BodyPart to the snake Array
+    public void addBodyPart(Pane pane) {
         Rectangle[] snakeNextSizeArray = new Rectangle[snakeLengthArr.length + 1];
 
         System.arraycopy(snakeLengthArr, 0, snakeNextSizeArray, 0, snakeLengthArr.length);
 
+        /* Long Version from Arraycopy
+        for (int i = 0; i < snakeLengthArr.length; i++) {
+            snakeNextSizeArray[i] = snakeLengthArr[i];
+        }
+         */
 
         Rectangle bodyPart = new Rectangle();
         bodyPart.setFill(bodyColor);
         bodyPart.setWidth(gridSize - 1);
         bodyPart.setHeight(gridSize - 1);
-        bodyPart.setX(- gridSize);  //so this rectangle is out of field, when it's created
+
+        //so this rectangle is out of the GameBoard, when it's created
+        bodyPart.setX(- gridSize);
         bodyPart.setY(- gridSize);
+
         snakeNextSizeArray[snakeLengthArr.length] = bodyPart;
-        snakeLengthArr = snakeNextSizeArray;  //overwrite whole variable
+
+        //overwrite whole variable
+        snakeLengthArr = snakeNextSizeArray;
 
         pane.getChildren().addAll(bodyPart);
-
     }
-
 }
