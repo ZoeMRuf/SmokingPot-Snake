@@ -2,7 +2,6 @@ package at.ac.fhcampuswien;
 
 import javafx.application.*;
 import javafx.scene.*;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
@@ -35,20 +34,14 @@ public class App extends Application {
         scene.setFill(Color.rgb(0, 0, 0));
 
         snake = new Snake();
-        root.getChildren().addAll(snake.getSnakeLength());
-        /*
-        Snake.nowSnakeSize++;
-        snake.plusSnakeSize();
-        root.getChildren().addAll(snake.getSnakeLength());
+        root.getChildren().addAll(snake.getSnakeLengthArr());
 
-         */
-
+        //snake.addBodyPart();
+        //root.getChildren().addAll(snake.getSnakeLengthArr());
 
         // Damit es auch etwas anzeigt
         primaryStage.setTitle("S N A K E");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
 }
