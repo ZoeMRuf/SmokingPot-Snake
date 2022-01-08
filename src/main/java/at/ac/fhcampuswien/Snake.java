@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.*;
 import javafx.scene.shape.Rectangle;
@@ -35,7 +36,7 @@ public class Snake extends Node {
             bodyPart.setHeight(gridSize - 1);
             bodyPart.setWidth(gridSize - 1);
 
-            bodyPart.setX(gridSize * (nowSnakeSize - 1) - i * gridSize);
+            bodyPart.setX(gridSize * (nowSnakeSize - 1) - i * gridSize + gridSize);
 
             snakeLengthArr[i] = bodyPart;
         }
@@ -45,6 +46,8 @@ public class Snake extends Node {
         return snakeLengthArr;
     }
 
+
+    /*
     public void addBodyPart() {
 
         this.snakeLengthArr = new Rectangle[snakeLengthArr.length + 1];
@@ -63,11 +66,41 @@ public class Snake extends Node {
         this.snakeLengthArr[snakeLengthArr.length-1] = bodyPart;
     }
 
+     */
+
+
+    //warum ist da ne psvm ????
+
+    /*
     public static void main(String[] args) {
         Snake s = new Snake();
         System.out.println(s.getSnakeLengthArr().length);
-        s.addBodyPart();
+        //s.addBodyPart();
         System.out.println(s.getSnakeLengthArr().length);
+    }
+
+     */
+
+
+    //if snake eats - body + 1
+    public void setBody(Pane pane) {
+
+        Rectangle[] snakeNextSizeArray = new Rectangle[snakeLengthArr.length + 1];
+
+        System.arraycopy(snakeLengthArr, 0, snakeNextSizeArray, 0, snakeLengthArr.length);
+
+
+        Rectangle bodyPart = new Rectangle();
+        bodyPart.setFill(bodyColor);
+        bodyPart.setWidth(gridSize - 1);
+        bodyPart.setHeight(gridSize - 1);
+        bodyPart.setX(- gridSize);  //so this rectangle is out of field, when it's created
+        bodyPart.setY(- gridSize);
+        snakeNextSizeArray[snakeLengthArr.length] = bodyPart;
+        snakeLengthArr = snakeNextSizeArray;  //overwrite whole variable
+
+        pane.getChildren().addAll(bodyPart);
+
     }
 
 }

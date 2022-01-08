@@ -43,5 +43,11 @@ public class App extends Application {
         primaryStage.setTitle("S N A K E");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
+
+
+        //snake gets longer
+        snake.setBody(root);
     }
 }
