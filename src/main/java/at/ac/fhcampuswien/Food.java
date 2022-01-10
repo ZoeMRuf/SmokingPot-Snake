@@ -26,7 +26,8 @@ import java.util.Random;
             pane.getChildren().addAll(food);
         }
 
-        public void deleteFood(){
+        public void deleteFood(Pane pane){
+            pane.getChildren().remove(food);
             this.setRandomFood(App.root);
         }
 

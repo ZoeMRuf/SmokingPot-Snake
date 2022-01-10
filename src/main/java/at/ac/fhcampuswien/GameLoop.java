@@ -36,7 +36,7 @@ public class GameLoop {
                 spawnFood = true;
             }
 
-            f.deleteFood();
+            f.deleteFood(App.root);
 
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
