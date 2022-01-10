@@ -14,7 +14,9 @@ public class GameLoop {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
             //what needs to be repeated for the game to work
 
+            getInput();
             App.snake.moveSnake();
+
 
 
         }));
@@ -24,8 +26,28 @@ public class GameLoop {
 
     }
 
+    private void getInput() {
 
 
+        App.root.setOnKeyPressed(event -> {
+            switch(event.getCode()) {
+                case RIGHT -> {
+
+                    if (App.snake.getDirection() != 'L') App.snake.setDirection('R');
+                }
+                case LEFT -> {
+                    if (App.snake.getDirection() != 'R') App.snake.setDirection('L');
+                }
+                case UP -> {
+                    if (App.snake.getDirection() != 'D') App.snake.setDirection('U');
+                }
+                case DOWN -> {
+                    if (App.snake.getDirection() != 'U') App.snake.setDirection('D');
+                }
+            }
+        });
+
+    }
 
 
 }

@@ -52,6 +52,15 @@ public class Snake extends Node {
         return this.getSnakeLengthArr()[0];
     }
 
+    public char getDirection() {
+        return direction;
+    }
+
+    public void setDirection(char direction) {
+        this.direction = direction;
+    }
+
+
     //add a new BodyPart to the snake Array
 
     /*
