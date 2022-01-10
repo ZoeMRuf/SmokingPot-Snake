@@ -18,6 +18,8 @@ public class Snake extends Node {
     private static Color headColor = Color.rgb(3, 160, 98);
     private static Color bodyColor = Color.rgb(209, 250, 113);
 
+    private char direction = 'R';
+
     //Conctuctor for Snake Object
     public Snake() {
         for (int i = 0; i < nowSnakeSize; i++) {
@@ -46,20 +48,30 @@ public class Snake extends Node {
         return snakeLengthArr;
     }
 
+    public Rectangle getHead(){
+        return this.getSnakeLengthArr()[0];
+    }
+
     //add a new BodyPart to the snake Array
+
+    /*
+    NOCH PROBLEMATISCH
+     */
     public void addBodyPart(Pane pane) {
         Rectangle[] snakeNextSizeArray = new Rectangle[snakeLengthArr.length + 1];
 
         System.arraycopy(snakeLengthArr, 0, snakeNextSizeArray, 0, snakeLengthArr.length);
 
-        /* Long Version from Arraycopy
+        /*Long Version from Arraycopy
         for (int i = 0; i < snakeLengthArr.length; i++) {
             snakeNextSizeArray[i] = snakeLengthArr[i];
         }
+
          */
 
+
         Rectangle bodyPart = new Rectangle();
-        bodyPart.setFill(bodyColor);
+        bodyPart.setFill(Color.rgb(255,255,255));
         bodyPart.setWidth(gridSize - 1);
         bodyPart.setHeight(gridSize - 1);
 
@@ -74,4 +86,31 @@ public class Snake extends Node {
 
         pane.getChildren().addAll(bodyPart);
     }
+
+    public void moveSnake(){
+
+        //Head
+        switch(direction){
+            case 'R':
+                this.getHead().setX(this.getHead().getX()+gridSize);
+                break;
+            case 'L':
+                this.getHead().setX(this.getHead().getX()-gridSize);
+                break;
+            case 'U':
+                this.getHead().setY(this.getHead().getY()-gridSize);
+                break;
+            case 'D':
+                this.getHead().setY(this.getHead().getY()+gridSize);
+                break;
+        }
+
+        //Body
+        for (int i = this.getSnakeLengthArr().length - 1; i > 0 ; i--) {
+            this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i-1].getX());
+            this.getSnakeLengthArr()[i].setY(getSnakeLengthArr()[i-1].getY());
+        }
+
+    }
+
 }

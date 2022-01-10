@@ -6,6 +6,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
 
+import java.util.Collection;
+
 public class App extends Application {
 
     //Alle Variablen die wir später brauchen
@@ -15,9 +17,10 @@ public class App extends Application {
     public static int GameSize = 480;
 
     //GUI Variablen
-    private static Pane root;
+    public static Pane root;
     private static Scene scene;
     private static GameOver gameOverScene; // To show "GameOver"
+    private static GameLoop gameLoop;
 
     public static void main(String[] args) {
         launch(args);
@@ -31,15 +34,15 @@ public class App extends Application {
         scene = new Scene(root, GameSize, GameSize);
         scene.setFill(Color.rgb(0, 0, 0));
 
+        gameLoop = new GameLoop();
         snake = new Snake();
-        root.getChildren().addAll(snake.getSnakeLengthArr());
 
         //to display our game
         primaryStage.setTitle("S N A K E");
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //snake gets longer
-        snake.addBodyPart(root);
+        App.root.getChildren().addAll(App.snake.getSnakeLengthArr());
+
     }
 }
