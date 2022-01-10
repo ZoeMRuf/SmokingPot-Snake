@@ -34,9 +34,11 @@ public class App extends Application {
         scene = new Scene(root, GameSize, GameSize);
         scene.setFill(Color.rgb(0, 0, 0));
 
-        gameLoop = new GameLoop();
+
         snake = new Snake();
-        food = new Food();
+
+
+        gameLoop = new GameLoop();
 
         //to display our game
         primaryStage.setTitle("S N A K E");

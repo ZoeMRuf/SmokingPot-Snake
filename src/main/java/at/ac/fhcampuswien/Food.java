@@ -2,25 +2,34 @@ package at.ac.fhcampuswien;
 
 import javafx.scene.image.Image;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
     public class Food {
         private Rectangle food;
+        private double foodScale = Snake.scale/4;
         Random r = new Random();
 
+
         public Food() {
+            food = new Rectangle();
             food.setFill(Color.rgb(255,0,150));
-            food.setHeight(App.snake.gridSize-5);
-            food.setWidth(App.snake.gridSize-5);
+            food.setHeight(App.snake.gridSize-foodScale);
+            food.setWidth(App.snake.gridSize-foodScale);
         }
 
-        public void setRandomFood(){
-            food.setX(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize);
-            food.setY(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize);
-            App.root.getChildren().addAll(food);
+        public void setRandomFood(Pane pane){
+            food.setX(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize+foodScale/2);
+            food.setY(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize+foodScale/2);
+            pane.getChildren().addAll(food);
         }
+
+        public void deleteFood(){
+            this.setRandomFood(App.root);
+        }
+
     }
 
 

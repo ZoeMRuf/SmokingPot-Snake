@@ -7,7 +7,9 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 250;
+    private final double tickTime = 1500;
+    private boolean spawnFood = false;
+    Food f = new Food();
 
 
     public GameLoop() {
@@ -18,9 +20,12 @@ public class GameLoop {
             App.snake.moveSnake();
             App.snake.addBodyPart(App.root);
 
-            App.food.setRandomFood();
+            if (!spawnFood){
+                f.setRandomFood(App.root);
+                spawnFood = true;
+            }
 
-
+            f.deleteFood();
 
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
