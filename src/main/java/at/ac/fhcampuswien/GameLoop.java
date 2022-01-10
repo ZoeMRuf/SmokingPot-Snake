@@ -19,7 +19,6 @@ public class GameLoop {
         mainPane.getChildren().addAll(fruitNew.getFruit());
         fruit = fruitNew;
 
-
      */
 
 
