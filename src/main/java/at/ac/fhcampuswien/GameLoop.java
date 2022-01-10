@@ -7,7 +7,7 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 150;
+    private final double tickTime = 1500;
 
 
     public GameLoop() {

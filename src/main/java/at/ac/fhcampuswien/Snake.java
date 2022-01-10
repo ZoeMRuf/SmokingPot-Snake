@@ -10,7 +10,7 @@ public class Snake extends Node {
     // Variables
     private static int scale = 20;
     private static int startSize = 2;
-    private final int gridSize = App.GameSize / scale;
+    public final int gridSize = App.GameSize / scale;
     public static int nowSnakeSize = startSize;
     private Rectangle[] snakeLengthArr = new Rectangle[nowSnakeSize];
 
@@ -38,7 +38,7 @@ public class Snake extends Node {
             bodyPart.setHeight(gridSize - 1);
             bodyPart.setWidth(gridSize - 1);
 
-            bodyPart.setX(gridSize * (nowSnakeSize - 1) - i * gridSize + gridSize);
+            bodyPart.setX(gridSize * (nowSnakeSize - 1) - i * gridSize);
 
             snakeLengthArr[i] = bodyPart;
         }
@@ -88,28 +88,29 @@ public class Snake extends Node {
     }
 
     public void moveSnake(){
-
-        //Head
-        switch(direction){
-            case 'R':
-                this.getHead().setX(this.getHead().getX()+gridSize);
-                break;
-            case 'L':
-                this.getHead().setX(this.getHead().getX()-gridSize);
-                break;
-            case 'U':
-                this.getHead().setY(this.getHead().getY()-gridSize);
-                break;
-            case 'D':
-                this.getHead().setY(this.getHead().getY()+gridSize);
-                break;
-        }
-
         //Body
         for (int i = this.getSnakeLengthArr().length - 1; i > 0 ; i--) {
             this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i-1].getX());
             this.getSnakeLengthArr()[i].setY(getSnakeLengthArr()[i-1].getY());
         }
+
+        //Head
+        switch(direction){
+            case 'R':
+                this.getHead().setX(this.getHead().getX() + gridSize);
+                break;
+            case 'L':
+                this.getHead().setX(this.getHead().getX() - gridSize);
+                break;
+            case 'U':
+                this.getHead().setY(this.getHead().getY() - gridSize);
+                break;
+            case 'D':
+                this.getHead().setY(this.getHead().getY() + gridSize);
+                break;
+        }
+
+
 
     }
 
