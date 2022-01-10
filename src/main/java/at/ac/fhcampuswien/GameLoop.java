@@ -12,6 +12,15 @@ public class GameLoop {
     Food f = new Food();
 
 
+    /*
+    Fruit fruitNew = new Fruit();
+        fruitNew.setFruit(x, y);
+        mainPane.getChildren().remove(fruit.getFruit());
+        mainPane.getChildren().addAll(fruitNew.getFruit());
+        fruit = fruitNew;
+     */
+
+
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
