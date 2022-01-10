@@ -8,7 +8,7 @@ import org.w3c.dom.css.Rect;
 
 public class Snake extends Node {
     // Variables
-    private static int scale = 20;
+    public static int scale = 20;
     private static int startSize = 2;
     public final int gridSize = App.GameSize / scale;
     public static int nowSnakeSize = startSize;

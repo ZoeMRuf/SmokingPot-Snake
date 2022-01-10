@@ -18,6 +18,8 @@ public class GameLoop {
             App.snake.moveSnake();
             App.snake.addBodyPart(App.root);
 
+            App.food.setRandomFood();
+
 
 
         }));

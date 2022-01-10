@@ -36,6 +36,7 @@ public class App extends Application {
 
         gameLoop = new GameLoop();
         snake = new Snake();
+        food = new Food();
 
         //to display our game
         primaryStage.setTitle("S N A K E");
