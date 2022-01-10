@@ -8,8 +8,10 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
     public class Food {
-        private Rectangle food;
-        private double foodScale = Snake.scale/4;
+        public static Rectangle food;
+        public double foodScale = Snake.scale/4;
+        public int foodX;
+        public int foodY;
         Random r = new Random();
 
 
@@ -18,6 +20,14 @@ import java.util.Random;
             food.setFill(Color.rgb(255,0,150));
             food.setHeight(App.snake.gridSize-foodScale);
             food.setWidth(App.snake.gridSize-foodScale);
+        }
+
+        public int getFoodX() {
+            return foodX = (int) (food.getX() + foodScale - foodScale - foodScale / 2);
+        }
+
+        public int getFoodY() {
+            return foodY = (int) (food.getY() + foodScale - foodScale - foodScale / 2);
         }
 
         public void setRandomFood(Pane pane){

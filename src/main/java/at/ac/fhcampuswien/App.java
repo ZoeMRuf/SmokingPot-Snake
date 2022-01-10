@@ -12,7 +12,6 @@ public class App extends Application {
 
     //Alle Variablen die wir später brauchen
     public static Snake snake;
-    public static Food food;
     public static GameOver gameOver;
     public static int GameSize = 480;
     public static int score = 0;

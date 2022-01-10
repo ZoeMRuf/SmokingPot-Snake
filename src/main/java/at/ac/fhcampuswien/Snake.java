@@ -4,7 +4,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.*;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 
 public class Snake extends Node {
     // Variables
@@ -13,6 +12,7 @@ public class Snake extends Node {
     public final int gridSize = App.GameSize / scale;
     public static int nowSnakeSize = startSize;
     private Rectangle[] snakeLengthArr = new Rectangle[nowSnakeSize];
+    public boolean snakeEats;
 
     //GUI
     private static Color headColor = Color.rgb(3, 160, 98);
@@ -80,7 +80,7 @@ public class Snake extends Node {
 
 
         Rectangle bodyPart = new Rectangle();
-        bodyPart.setFill(Color.rgb(255,255,255));
+        bodyPart.setFill(bodyColor);
         bodyPart.setWidth(gridSize - 1);
         bodyPart.setHeight(gridSize - 1);
 
@@ -121,6 +121,16 @@ public class Snake extends Node {
 
 
 
+    }
+
+
+    public void doesSnakeEat () {
+
+        snakeEats = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
+                (GameLoop.food.getFoodY())));
+
+        System.out.println("Snake x: " + this.getHead().getX());
+        System.out.println("Food x: " + GameLoop.food.getFoodX());
     }
 
 }

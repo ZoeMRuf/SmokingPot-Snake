@@ -9,11 +9,10 @@ public class GameLoop {
     public Timeline timeLine;
     private final double tickTime = 1500;
     private boolean spawnFood = false;
-    Food f = new Food();
+    public static Food food = new Food();
 
 
     /*
-    Fruit fruitNew = new Fruit();
         fruitNew.setFruit(x, y);
         mainPane.getChildren().remove(fruit.getFruit());
         mainPane.getChildren().addAll(fruitNew.getFruit());
@@ -27,16 +26,27 @@ public class GameLoop {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
             //what needs to be repeated for the game to work
 
-            getInput();
-            App.snake.moveSnake();
-            App.snake.addBodyPart(App.root);
-
+            //set first food
             if (!spawnFood){
-                f.setRandomFood(App.root);
+                food.setRandomFood(App.root);
                 spawnFood = true;
             }
 
-            f.deleteFood(App.root);
+            getInput();
+            App.snake.moveSnake();
+            App.snake.doesSnakeEat();
+
+            if (App.snake.snakeEats) {
+                //new food
+                food.deleteFood(App.root);
+
+                //add body part
+                App.snake.addBodyPart(App.root);
+
+                App.score++;
+            }
+
+
 
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
