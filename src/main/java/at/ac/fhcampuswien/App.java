@@ -18,7 +18,7 @@ public class App extends Application {
 
     //GUI Variablen
     public static Pane root;
-    private static Scene scene;
+    public static Scene scene;
     private static GameOver gameOverScene; // To show "GameOver"
     private static GameLoop gameLoop;
 

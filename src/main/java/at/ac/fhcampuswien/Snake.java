@@ -97,7 +97,7 @@ public class Snake extends Node {
     }
 
     public void moveSnake(){
-        //Body (first is very important!!)
+        //Body
         for (int i = this.getSnakeLengthArr().length - 1; i > 0 ; i--) {
             this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i-1].getX());
             this.getSnakeLengthArr()[i].setY(getSnakeLengthArr()[i-1].getY());

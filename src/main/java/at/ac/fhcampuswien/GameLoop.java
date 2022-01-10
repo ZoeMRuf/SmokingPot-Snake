@@ -7,7 +7,7 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 1500;
+    private final double tickTime = 250;
 
 
     public GameLoop() {
@@ -16,34 +16,39 @@ public class GameLoop {
 
             getInput();
             App.snake.moveSnake();
+            App.snake.addBodyPart(App.root);
 
 
 
         }));
-
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
-
     }
 
     private void getInput() {
 
-
-        App.root.setOnKeyPressed(event -> {
+        App.scene.setOnKeyReleased(event -> {
             switch(event.getCode()) {
-                case RIGHT -> {
-
-                    if (App.snake.getDirection() != 'L') App.snake.setDirection('R');
-                }
-                case LEFT -> {
-                    if (App.snake.getDirection() != 'R') App.snake.setDirection('L');
-                }
-                case UP -> {
-                    if (App.snake.getDirection() != 'D') App.snake.setDirection('U');
-                }
-                case DOWN -> {
-                    if (App.snake.getDirection() != 'U') App.snake.setDirection('D');
-                }
+                case RIGHT:
+                    if (App.snake.getDirection() != 'L'){
+                        App.snake.setDirection('R');
+                    }
+                    break;
+                case LEFT:
+                    if (App.snake.getDirection() != 'R'){
+                        App.snake.setDirection('L');
+                    }
+                    break;
+                case UP:
+                    if (App.snake.getDirection() != 'D'){
+                        App.snake.setDirection('U');
+                    }
+                    break;
+                case DOWN:
+                    if (App.snake.getDirection() != 'U'){
+                        App.snake.setDirection('D');
+                    }
+                    break;
             }
         });
 
