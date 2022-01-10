@@ -14,10 +14,9 @@ import java.util.Random;
         public int foodY;
         Random r = new Random();
 
-
         public Food() {
             food = new Rectangle();
-            food.setFill(Color.rgb(255,0,150));
+            food.setFill(Color.rgb(35,100,150));
             food.setHeight(App.snake.gridSize-foodScale);
             food.setWidth(App.snake.gridSize-foodScale);
         }

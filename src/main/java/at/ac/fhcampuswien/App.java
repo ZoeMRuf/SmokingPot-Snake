@@ -34,10 +34,7 @@ public class App extends Application {
         scene = new Scene(root, GameSize, GameSize);
         scene.setFill(Color.rgb(0, 0, 0));
 
-
         snake = new Snake();
-
-
         gameLoop = new GameLoop();
 
         //to display our game
@@ -46,6 +43,5 @@ public class App extends Application {
         primaryStage.show();
 
         App.root.getChildren().addAll(App.snake.getSnakeLengthArr());
-
     }
 }

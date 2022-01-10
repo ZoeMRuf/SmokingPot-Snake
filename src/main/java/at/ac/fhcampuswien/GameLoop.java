@@ -7,20 +7,9 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 1500;
+    private final double tickTime = 150;
     private boolean spawnFood = false;
     public static Food food = new Food();
-
-
-    /*
-        fruitNew.setFruit(x, y);
-        mainPane.getChildren().remove(fruit.getFruit());
-        mainPane.getChildren().addAll(fruitNew.getFruit());
-        fruit = fruitNew;
-
-     */
-
-
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
@@ -45,16 +34,12 @@ public class GameLoop {
 
                 App.score++;
             }
-
-
-
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
     }
 
     private void getInput() {
-
         App.scene.setOnKeyReleased(event -> {
             switch(event.getCode()) {
                 case RIGHT:
@@ -79,8 +64,5 @@ public class GameLoop {
                     break;
             }
         });
-
     }
-
-
 }

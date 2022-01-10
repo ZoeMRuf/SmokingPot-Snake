@@ -60,12 +60,7 @@ public class Snake extends Node {
         this.direction = direction;
     }
 
-
     //add a new BodyPart to the snake Array
-
-    /*
-    NOCH PROBLEMATISCH
-     */
     public void addBodyPart(Pane pane) {
         Rectangle[] snakeNextSizeArray = new Rectangle[snakeLengthArr.length + 1];
 
@@ -77,7 +72,6 @@ public class Snake extends Node {
         }
 
          */
-
 
         Rectangle bodyPart = new Rectangle();
         bodyPart.setFill(bodyColor);
@@ -97,6 +91,7 @@ public class Snake extends Node {
     }
 
     public void moveSnake(){
+
         //Body
         for (int i = this.getSnakeLengthArr().length - 1; i > 0 ; i--) {
             this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i-1].getX());
@@ -118,19 +113,11 @@ public class Snake extends Node {
                 this.getHead().setY(this.getHead().getY() + gridSize);
                 break;
         }
-
-
-
     }
 
-
     public void doesSnakeEat () {
-
         snakeEats = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
                 (GameLoop.food.getFoodY())));
-
-        System.out.println("Snake x: " + this.getHead().getX());
-        System.out.println("Food x: " + GameLoop.food.getFoodX());
     }
 
 }
