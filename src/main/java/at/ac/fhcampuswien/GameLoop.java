@@ -12,6 +12,7 @@ public class GameLoop {
     Food f = new Food();
 
 
+
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
             //what needs to be repeated for the game to work

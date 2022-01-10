@@ -15,6 +15,7 @@ public class App extends Application {
     public static Food food;
     public static GameOver gameOver;
     public static int GameSize = 480;
+    public static int score = 0;
 
     //GUI Variablen
     public static Pane root;
