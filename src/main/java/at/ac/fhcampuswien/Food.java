@@ -30,8 +30,8 @@ import java.util.Random;
         }
 
         public void setRandomFood(Pane pane){
-            food.setX(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize+foodScale/2);
-            food.setY(r.nextInt(App.snake.scale)*App.snake.gridSize+App.snake.gridSize+foodScale/2);
+            food.setX(r.nextInt((App.snake.scale - 0) + 0) * App.snake.gridSize+foodScale/2);
+            food.setY(r.nextInt((App.snake.scale - 0) + 0) * App.snake.gridSize+foodScale/2);
             pane.getChildren().addAll(food);
         }
 
