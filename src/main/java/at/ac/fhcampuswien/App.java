@@ -38,10 +38,13 @@ public class App extends Application {
         //Objekts that need to be created
         root = new Pane();
 
+        /*
         Text text = new Text();
         text.setText("Score: " + score);
         text.setLayoutX(20);
         text.setLayoutY(GameSize - 20);
+
+         */
 
         /*
         scoreText = new Text();
@@ -51,13 +54,10 @@ public class App extends Application {
         scoreText.setFill(Color.rgb(255,255,255));
          */
 
-        root.getChildren().add(text);
+        //root.getChildren().add(text);
 
         scene = new Scene(root, GameSize, GameSize);
-
         scene.setFill(Color.rgb(0, 0, 0));
-
-
 
         snake = new Snake();
         gameLoop = new GameLoop();
