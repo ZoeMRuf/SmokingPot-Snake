@@ -4,6 +4,7 @@ import javafx.application.*;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -59,6 +60,7 @@ public class App extends Application {
 
         //to display our game
         primaryStage.setTitle("S N A K E");
+        primaryStage.getIcons().add(new Image(getClass().getResource("/OnlyTestApple.jpg").toExternalForm()));
         primaryStage.setScene(scene);
         primaryStage.show();
 
