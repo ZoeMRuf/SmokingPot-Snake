@@ -12,6 +12,7 @@ import java.util.Random;
         public double foodScale = Snake.scale/4;
         public int foodX;
         public int foodY;
+        public boolean foodNotInSnake = true;
         Random r = new Random();
 
         public Food() {
@@ -22,11 +23,11 @@ import java.util.Random;
         }
 
         public int getFoodX() {
-            return foodX = (int) (food.getX() + foodScale - foodScale - foodScale / 2);
+            return foodX = (int) (food.getX() - foodScale / 2);
         }
 
         public int getFoodY() {
-            return foodY = (int) (food.getY() + foodScale - foodScale - foodScale / 2);
+            return foodY = (int) (food.getY() - foodScale / 2);
         }
 
         public void setRandomFood(Pane pane){
@@ -35,8 +36,8 @@ import java.util.Random;
             double randomY;
 
             do {
-                randomX = r.nextInt(Snake.scale) * App.snake.gridSize + App.snake.gridSize + foodScale/2;
-                randomY = r.nextInt(Snake.scale) * App.snake.gridSize + App.snake.gridSize + foodScale/2;
+                randomX = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale/2;
+                randomY = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale/2;
             }
             while (randomX < 0 || randomX > App.GameSize || randomY < 0 || randomY > App.GameSize );
 
@@ -47,11 +48,27 @@ import java.util.Random;
             pane.getChildren().addAll(food);
         }
 
-        public void deleteFood(Pane pane){
+        public void deleteFood(Pane pane) {
             pane.getChildren().remove(food);
             this.setRandomFood(App.root);
-        }
 
+            //Makes sure that no food spawns inside the snake
+            do{
+                for (int i = 0; i < App.snake.getSnakeLengthArr().length; i++) {
+                    if (App.snake.getSnakeLengthArr()[i].getX() == this.getFoodX() &&
+                            App.snake.getSnakeLengthArr()[i].getY() == this.getFoodY()) {
+                        System.out.println("YES");
+                        pane.getChildren().remove(food);
+                        this.setRandomFood(App.root);
+                        if(!foodNotInSnake)
+                            foodNotInSnake = true;
+                        break;
+                    }
+                    foodNotInSnake = false;
+                }
+            }while(foodNotInSnake);
+            foodNotInSnake = true;
+        }
     }
 
 
