@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien;
 
 import javafx.application.*;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.*;
 import javafx.scene.image.Image;
@@ -27,7 +28,7 @@ public class App extends Application {
     public static Pane root;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     private static GameLoop gameLoop;
-    public Text scoreText;
+    public Text scoreText, gameOverText;
     private static Group group;
 
     public static void main(String[] args) {
@@ -43,7 +44,7 @@ public class App extends Application {
         VBox layoutGame = new VBox();
         root = new Pane();
 
-        Text scoreText = new Text();
+        scoreText = new Text();
         scoreText.setFill(Color.rgb(255, 255, 255));
         scoreText.setFont(Font.font("Courier New", Snake.scale));
         scoreText.setTextOrigin(VPos.BOTTOM);
@@ -82,7 +83,18 @@ public class App extends Application {
         backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
 
         VBox layoutGameOver = new VBox();
-        layoutGameOver.getChildren().addAll(playAgain, backToMenu);
+        layoutGameOver.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
+
+        layoutGameOver.setAlignment(Pos.CENTER);
+        layoutGameOver.setSpacing(50);
+        gameOverText = new Text("Game Over");
+        gameOverText.setFont(Font.font ("Verdana", 70));
+        gameOverText.setFill(Color.rgb(252,3,3));
+        Text gameOverscoreText = new Text("Score: " + score);
+        gameOverscoreText.setFill(Color.rgb(255, 255, 255));
+        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
+        layoutGameOver.getChildren().addAll(gameOverText, gameOverscoreText, playAgain, backToMenu);
+
         sceneGameOver = new Scene(layoutGameOver, GameSize, GameSize);
 
 
