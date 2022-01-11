@@ -28,7 +28,7 @@ public class App extends Application {
     public static Pane root;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     private static GameLoop gameLoop;
-    public Text scoreText, gameOverText;
+    public static Text scoreText, gameOverText;
     private static Group group;
 
     public static void main(String[] args) {
@@ -76,7 +76,7 @@ public class App extends Application {
         layoutMenu.getChildren().addAll(label, startGame,showHighScore, gameOver);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
 
-        //GameOver Scene
+        //GameOver Scene:
         Button playAgain = new Button("Play again");
         playAgain.setOnAction(e -> primaryStage.setScene(sceneGame));
         Button backToMenu = new Button("Back to Menu");
@@ -106,5 +106,19 @@ public class App extends Application {
         primaryStage.show();
 
         App.root.getChildren().addAll(App.snake.getSnakeLengthArr());
+    }
+
+
+    public static void getNewScoreOnScreen() {
+
+        root.getChildren().remove(scoreText);
+        scoreText.setFill(Color.rgb(255, 255, 255));
+        scoreText.setFont(Font.font("Courier New", Snake.scale));
+        scoreText.setTextOrigin(VPos.BOTTOM);
+        scoreText.setTranslateX(0);
+        scoreText.setText("Score: " + score);
+        scoreText.setLayoutX(Snake.scale);
+        scoreText.setTranslateY(GameSize);
+        root.getChildren().addAll(scoreText);
     }
 }

@@ -44,6 +44,9 @@ public class GameLoop {
                 App.snake.addBodyPart(App.root);
 
                 App.score++;
+
+                App.getNewScoreOnScreen();
+
             }
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
