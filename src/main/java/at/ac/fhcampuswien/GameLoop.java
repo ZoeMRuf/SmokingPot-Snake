@@ -7,20 +7,9 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 150;
+    private final double tickTime = 250;
     private boolean spawnFood = false;
     public static Food food = new Food();
-
-
-    /*
-        fruitNew.setFruit(x, y);
-        mainPane.getChildren().remove(fruit.getFruit());
-        mainPane.getChildren().addAll(fruitNew.getFruit());
-        fruit = fruitNew;
-
-     */
-
-
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
@@ -36,6 +25,10 @@ public class GameLoop {
             App.snake.moveSnake();
             App.snake.doesSnakeEat();
 
+            GameOver.snakeHitItSelf();
+            GameOver.snakeLeavesGameBoard();
+
+
             if (App.snake.snakeEats) {
                 //new food
                 food.deleteFood(App.root);
@@ -46,6 +39,17 @@ public class GameLoop {
                 App.score++;
 
                 App.getNewScoreOnScreen();
+
+            }
+
+            if (GameOver.isGameOver) {
+
+                GameOver.isGameOver = false;
+                System.out.println("Game Over");
+                timeLine.stop();
+
+                //Not sure how to implement sceneGameOver on mouse click zum testen eventuell brauben wir eine primay stage variable
+                //App.sceneGameOver.setOnMouseClicked(e -> App.primaryStage.setScene(sceneGameOver));
 
             }
         }));

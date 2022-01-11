@@ -42,9 +42,7 @@ import java.util.Random;
             while (randomX < 0 || randomX > App.GameSize || randomY < 0 || randomY > App.GameSize );
 
             food.setX(randomX);
-            System.out.println(randomX);
             food.setY(randomY);
-            System.out.println(randomY);
             pane.getChildren().addAll(food);
         }
 
@@ -57,7 +55,7 @@ import java.util.Random;
                 for (int i = 0; i < App.snake.getSnakeLengthArr().length; i++) {
                     if (App.snake.getSnakeLengthArr()[i].getX() == this.getFoodX() &&
                             App.snake.getSnakeLengthArr()[i].getY() == this.getFoodY()) {
-                        System.out.println("YES");
+                        //System.out.println("YES");
                         pane.getChildren().remove(food);
                         this.setRandomFood(App.root);
                         if(!foodNotInSnake)

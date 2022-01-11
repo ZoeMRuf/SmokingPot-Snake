@@ -70,7 +70,6 @@ public class Snake extends Node {
         for (int i = 0; i < snakeLengthArr.length; i++) {
             snakeNextSizeArray[i] = snakeLengthArr[i];
         }
-
          */
 
         Rectangle bodyPart = new Rectangle();

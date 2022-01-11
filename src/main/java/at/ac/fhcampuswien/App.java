@@ -27,14 +27,13 @@ public class App extends Application {
     //GUI Variablen
     public static Pane root;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
-    private static GameLoop gameLoop;
+    public static GameLoop gameLoop;
     public static Text scoreText, gameOverText;
     private static Group group;
 
     public static void main(String[] args) {
         launch(args);
     }
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -61,11 +60,11 @@ public class App extends Application {
         Button showHighScore = new Button("Show High-score");
 
         startGame.setOnAction(e -> primaryStage.setScene(sceneGame));
-        Button gameOver = new Button("Test GameOver");
-        gameOver.setOnAction(e -> primaryStage.setScene(sceneGameOver));
+        Button gameOverButton = new Button("Test GameOver");
+        gameOverButton.setOnAction(e -> primaryStage.setScene(sceneGameOver));
 
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(label, startGame,showHighScore, gameOver);
+        layoutMenu.getChildren().addAll(label, startGame,showHighScore, gameOverButton);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
 
         //GameOver Scene:
@@ -88,7 +87,6 @@ public class App extends Application {
         layoutGameOver.getChildren().addAll(gameOverText, gameOverscoreText, playAgain, backToMenu);
 
         sceneGameOver = new Scene(layoutGameOver, GameSize, GameSize);
-
 
         //to display our game
         primaryStage.setTitle("S N A K E");
