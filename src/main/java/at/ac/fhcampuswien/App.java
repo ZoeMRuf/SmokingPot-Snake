@@ -25,10 +25,9 @@ public class App extends Application {
 
     //GUI Variablen
     public static Pane root;
-    public static Scene sceneGame, sceneMenu;
-    private static GameOver gameOverScene; // To show "GameOver"
+    public static Scene sceneGame, sceneMenu, sceneGameOver;
     private static GameLoop gameLoop;
-    public static Text scoreText;
+    public Text scoreText;
     private static Group group;
 
     public static void main(String[] args) {
@@ -36,11 +35,10 @@ public class App extends Application {
     }
 
 
-    //we need throws Exception - otherwise setOnAction wouldn't work
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) {
 
-        //all for our Game Scene
+        //Game Scene:
         //Objekts that need to be created
         VBox layoutGame = new VBox();
         root = new Pane();
@@ -64,19 +62,33 @@ public class App extends Application {
         snake = new Snake();
         gameLoop = new GameLoop();
 
-        //all for our Menu
+        //Menu scene:
         Label label = new Label("Welcome to our Version of Snake");
         Button startGame = new Button("Start the Game");
         Button showHighScore = new Button("Show High-score");
 
         startGame.setOnAction(e -> primaryStage.setScene(sceneGame));
+        Button gameOver = new Button("Test GameOver");
+        gameOver.setOnAction(e -> primaryStage.setScene(sceneGameOver));
 
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(label, startGame,showHighScore);
-        sceneMenu = new Scene(layoutMenu, GameSize - Snake.scale * 2, GameSize - Snake.scale * 2);
+        layoutMenu.getChildren().addAll(label, startGame,showHighScore, gameOver);
+        sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
+
+        //GameOver Scene
+        Button playAgain = new Button("Play again");
+        playAgain.setOnAction(e -> primaryStage.setScene(sceneGame));
+        Button backToMenu = new Button("Back to Menu");
+        backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
+
+        VBox layoutGameOver = new VBox();
+        layoutGameOver.getChildren().addAll(playAgain, backToMenu);
+        sceneGameOver = new Scene(layoutGameOver, GameSize, GameSize);
+
 
         //to display our game
         primaryStage.setTitle("S N A K E");
+        //TODO @Andela hier passt sicher eines von deinen gezeichnten Bildern gut als Icon :)
         primaryStage.getIcons().add(new Image(getClass().getResource("/OnlyTestApple.jpg").toExternalForm()));
         primaryStage.setScene(sceneMenu);
         primaryStage.show();
