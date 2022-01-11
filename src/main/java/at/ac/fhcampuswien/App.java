@@ -45,15 +45,7 @@ public class App extends Application {
         root = new Pane();
 
         scoreText = new Text();
-        scoreText.setFill(Color.rgb(255, 255, 255));
-        scoreText.setFont(Font.font("Courier New", Snake.scale));
-        scoreText.setTextOrigin(VPos.BOTTOM);
-        scoreText.setTranslateX(0);
-        scoreText.setText("Score: " + score);
-        scoreText.setLayoutX(Snake.scale);
-        scoreText.setTranslateY(GameSize);
-
-        root.getChildren().add(scoreText);
+        getNewScoreOnScreen();
 
         layoutGame.getChildren().addAll(root);
         layoutGame.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
