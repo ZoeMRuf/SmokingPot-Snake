@@ -2,6 +2,7 @@ package at.ac.fhcampuswien;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class GameLoop {
@@ -22,7 +23,7 @@ public class GameLoop {
 
 
 
-    public GameLoop() {
+    public GameLoop(Pane pane) {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
             //what needs to be repeated for the game to work
 
@@ -44,6 +45,10 @@ public class GameLoop {
                 App.snake.addBodyPart(App.root);
 
                 App.score++;
+
+                System.out.println(App.score);
+                pane.getChildren().remove(App.scoreText);
+                pane.getChildren().addAll(App.scoreText);
             }
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
