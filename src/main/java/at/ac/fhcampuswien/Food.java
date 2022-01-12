@@ -39,7 +39,7 @@ import java.util.Random;
                 randomX = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale/2;
                 randomY = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale/2;
             }
-            while (randomX < 0 || randomX > App.GameSize || randomY < 0 || randomY > App.GameSize );
+            while (randomX < 0 || randomX >= App.GameSize || randomY < 0 || randomY >= App.GameSize );
 
             food.setX(randomX);
             food.setY(randomY);

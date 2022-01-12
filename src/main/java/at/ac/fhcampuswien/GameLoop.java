@@ -7,7 +7,7 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 250;
+    private final double tickTime = 150;
     private boolean spawnFood = false;
     public static Food food = new Food();
 
