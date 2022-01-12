@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 
 public class GameOver {
 
-    //TODO if Gameover get Menu Scene (from App) & delete from App button "Test GameOver scene"
+    //TODO if Gameover gets Menu Scene (from App) & delete from App button "Test GameOver scene"
 
 
     public static boolean isGameOver = false;
