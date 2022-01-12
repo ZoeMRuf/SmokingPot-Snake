@@ -2,18 +2,27 @@ package at.ac.fhcampuswien;
 
 import javafx.application.*;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.HBox;
+
+
+import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class App extends Application {
@@ -36,7 +45,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
 
         //Game Scene:
         //Objekts that need to be created
@@ -75,17 +84,34 @@ public class App extends Application {
         gameLoop.timeLine.stop();
 
         //Menu scene:
+        //FileInputStream input = new FileInputStream("/snakyTest.png");
+        Image snakyTest = new Image("/snakyTest.png");
+        ImageView imgView = new ImageView();
+        imgView.setImage(snakyTest);
+        Rectangle2D viewportRect = new Rectangle2D(0,0,150,150);
+        imgView.setViewport(viewportRect);
+
         Label label = new Label("Welcome to our Version of Snake");
+        Font labelfont = Font.font("Courier New",FontWeight.BOLD,20);
+        label.setFont(labelfont);
         Button startGame = new Button("Start the Game");
+        Font startG = Font.font("Courier New",FontWeight.BOLD,36);
+        startGame.setFont(startG);
         Button showHighScore = new Button("Show High-score");
+        Font showHS = Font.font("Courier New",FontWeight.BOLD,16);
+        showHighScore.setFont(showHS);
+
 
          startGame.setOnAction(event -> {
             gameLoop.timeLine.play();
             primaryStage.setScene(sceneGame);
         });
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(label, startGame,showHighScore);
+        layoutMenu.getChildren().addAll(imgView, label, startGame,showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
+        layoutMenu.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN,null,null)));
+        layoutMenu.setAlignment(Pos.CENTER);
+        layoutMenu.setSpacing(30);
 
         //to display our game
         primaryStage.setTitle("S N A K E");
