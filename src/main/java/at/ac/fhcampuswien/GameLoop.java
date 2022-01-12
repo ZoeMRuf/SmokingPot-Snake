@@ -2,6 +2,7 @@ package at.ac.fhcampuswien;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
 public class GameLoop {
@@ -10,6 +11,7 @@ public class GameLoop {
     private final double tickTime = 150;
     private boolean spawnFood = false;
     public static Food food = new Food();
+    public static boolean snakeMoved = true;
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
@@ -22,6 +24,7 @@ public class GameLoop {
             }
 
             getInput();
+            snakeMoved = true;
             App.snake.moveSnake();
             App.snake.doesSnakeEat();
 
@@ -50,7 +53,6 @@ public class GameLoop {
 
                 //Not sure how to implement sceneGameOver on mouse click zum testen eventuell brauben wir eine primay stage variable
                 //App.sceneGameOver.setOnMouseClicked(e -> App.primaryStage.setScene(sceneGameOver));
-
             }
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
@@ -58,29 +60,35 @@ public class GameLoop {
     }
 
     private void getInput() {
-        App.sceneGame.setOnKeyReleased(event -> {
-            switch(event.getCode()) {
-                case RIGHT:
-                    if (App.snake.getDirection() != 'L'){
-                        App.snake.setDirection('R');
-                    }
-                    break;
-                case LEFT:
-                    if (App.snake.getDirection() != 'R'){
-                        App.snake.setDirection('L');
-                    }
-                    break;
-                case UP:
-                    if (App.snake.getDirection() != 'D'){
-                        App.snake.setDirection('U');
-                    }
-                    break;
-                case DOWN:
-                    if (App.snake.getDirection() != 'U'){
-                        App.snake.setDirection('D');
-                    }
-                    break;
-            }
-        });
+        if(snakeMoved){
+            App.sceneGame.setOnKeyReleased(event -> {
+                switch(event.getCode()) {
+                    case RIGHT:
+                        if (App.snake.getDirection() != 'L' && snakeMoved){
+                            App.snake.setDirection('R');
+                            snakeMoved = false;
+                        }
+                        break;
+                    case LEFT:
+                        if (App.snake.getDirection() != 'R' && snakeMoved){
+                            App.snake.setDirection('L');
+                            snakeMoved = false;
+                        }
+                        break;
+                    case UP:
+                        if (App.snake.getDirection() != 'D' && snakeMoved){
+                            App.snake.setDirection('U');
+                            snakeMoved = false;
+                        }
+                        break;
+                    case DOWN:
+                        if (App.snake.getDirection() != 'U' && snakeMoved){
+                            App.snake.setDirection('D');
+                            snakeMoved = false;
+                        }
+                        break;
+                }
+            });
+        }
     }
 }
