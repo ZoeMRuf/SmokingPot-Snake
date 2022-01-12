@@ -90,7 +90,7 @@ public class App extends Application {
         //to display our game
         primaryStage.setTitle("S N A K E");
         //TODO @Andela hier passt sicher eines von deinen gezeichnten Bildern gut als Icon :)
-        primaryStage.getIcons().add(new Image(getClass().getResource("/OnlyTestApple.jpg").toExternalForm()));
+        primaryStage.getIcons().add(new Image(getClass().getResource("/snakyTest.png").toExternalForm()));
         primaryStage.setScene(sceneMenu);
         primaryStage.show();
 

@@ -15,8 +15,8 @@ public class Snake extends Node {
     public boolean snakeEats;
 
     //GUI
-    private static Color headColor = Color.rgb(3, 160, 98);
-    private static Color bodyColor = Color.rgb(209, 250, 113);
+    private static Color headColor = Color.rgb(30, 160, 98);
+    private static Color bodyColor = Color.rgb(0, 255, 50);
 
     private char direction = 'R';
 
