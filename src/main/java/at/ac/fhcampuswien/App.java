@@ -25,11 +25,11 @@ public class App extends Application {
     public static int score = 0;
 
     //GUI Variablen
-    public static Pane root;
+    public static Pane root, paneGameOver;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     public static GameLoop gameLoop;
-    public static Text scoreText, gameOverText;
-    private static Group group;
+    public static Text scoreText, gameOverText, gameOverscoreText;
+    public static Button playAgain, backToMenu;
 
     public static void main(String[] args) {
         launch(args);
@@ -46,7 +46,26 @@ public class App extends Application {
         scoreText = new Text();
         getNewScoreOnScreen();
 
-        layoutGame.getChildren().addAll(root);
+        //Begin GameOver Scene inside of GameScene:
+        paneGameOver = new Pane();
+
+        playAgain = new Button("Play again");
+        playAgain.setOnAction(e -> {
+            gameLoop.timeLine.play();
+            primaryStage.setScene(sceneGame);
+        });
+        backToMenu = new Button("Back to Menu");
+        backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
+
+        gameOverText = new Text("Game Over");
+        gameOverText.setFont(Font.font ("Verdana", 70));
+        gameOverText.setFill(Color.rgb(252,3,3));
+        gameOverscoreText = new Text("Score: " + score);
+        gameOverscoreText.setFill(Color.rgb(255, 255, 255));
+        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
+        // End of Game Over inside of GameScene
+
+        layoutGame.getChildren().addAll(root, paneGameOver);
         layoutGame.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
 
         sceneGame = new Scene(layoutGame, GameSize, GameSize);
@@ -64,36 +83,9 @@ public class App extends Application {
             gameLoop.timeLine.play();
             primaryStage.setScene(sceneGame);
         });
-        Button gameOverButton = new Button("Test GameOver");
-        gameOverButton.setOnAction(e -> primaryStage.setScene(sceneGameOver));
-
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(label, startGame,showHighScore, gameOverButton);
+        layoutMenu.getChildren().addAll(label, startGame,showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
-
-        //GameOver Scene:
-        Button playAgain = new Button("Play again");
-        playAgain.setOnAction(e -> {
-            gameLoop.timeLine.play();
-            primaryStage.setScene(sceneGame);
-        });
-        Button backToMenu = new Button("Back to Menu");
-        backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
-
-        VBox layoutGameOver = new VBox();
-        layoutGameOver.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
-
-        layoutGameOver.setAlignment(Pos.CENTER);
-        layoutGameOver.setSpacing(50);
-        gameOverText = new Text("Game Over");
-        gameOverText.setFont(Font.font ("Verdana", 70));
-        gameOverText.setFill(Color.rgb(252,3,3));
-        Text gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(Color.rgb(255, 255, 255));
-        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-        layoutGameOver.getChildren().addAll(gameOverText, gameOverscoreText, playAgain, backToMenu);
-
-        sceneGameOver = new Scene(layoutGameOver, GameSize, GameSize);
 
         //to display our game
         primaryStage.setTitle("S N A K E");
@@ -119,3 +111,4 @@ public class App extends Application {
         root.getChildren().addAll(scoreText);
     }
 }
+

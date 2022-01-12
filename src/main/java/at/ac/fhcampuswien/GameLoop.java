@@ -51,8 +51,8 @@ public class GameLoop {
                 System.out.println("Game Over");
                 timeLine.stop();
 
-                //Not sure how to implement sceneGameOver on mouse click zum testen eventuell brauben wir eine primay stage variable
-                //App.sceneGameOver.setOnMouseClicked(e -> App.primaryStage.setScene(sceneGameOver));
+                App.root.getChildren().remove(App.scoreText);
+                App.paneGameOver.getChildren().addAll(App.gameOverText, App.gameOverscoreText, App.playAgain, App.backToMenu);
             }
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
