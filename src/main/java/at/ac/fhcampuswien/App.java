@@ -72,7 +72,7 @@ public class App extends Application {
         paneGameOver.setPadding(new Insets(10, 10, 10, 10));
 
             playAgain = new Button("Play again");
-        Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,40);
+        Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,20);
         playAgain.setFont(playAgainFont);
         //Pane root = new Pane();
         playAgain.setLayoutX(10);
@@ -83,10 +83,10 @@ public class App extends Application {
 
         });
         backToMenu = new Button("Back to Menu");
-        Font btmFont = Font.font("Courier New",FontWeight.BOLD,30);
+        Font btmFont = Font.font("Courier New",FontWeight.BOLD,20);
         backToMenu.setFont(btmFont);
-        backToMenu.setLayoutX(50);
-        backToMenu.setLayoutY(30);
+        backToMenu.setLayoutX(10);
+        backToMenu.setLayoutY(10);
         backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
 
         gameOverText = new Text("Game Over");

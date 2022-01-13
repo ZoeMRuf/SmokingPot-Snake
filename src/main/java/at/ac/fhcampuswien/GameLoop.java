@@ -55,11 +55,10 @@ public class GameLoop {
                 System.out.println("Game Over");
                 timeLine.stop();
 
-                App.paneGameOver.add(App.gameOverText, 0, 0, 2,2);
+                App.paneGameOver.add(App.gameOverText, 0, 0, 3,2);
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
-
-                App.paneGameOver.add(App.gameOverscoreText, 0, 3, 1, 1);
+                App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
             }
         }));
