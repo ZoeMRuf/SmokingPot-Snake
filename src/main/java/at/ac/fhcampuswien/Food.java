@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
@@ -7,6 +9,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
+
+import java.sql.Time;
 import java.util.Random;
 
     public class Food {
@@ -19,14 +24,14 @@ import java.util.Random;
 
         public Food() {
             //random Food choice
-            String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png"};
-            Random foodGenerator = new Random();
-            int randomIndex = foodGenerator.nextInt(foodPaths.length);
-            Image foodImg = new Image(foodPaths[randomIndex]);
-            food = new Rectangle(App.snake.gridSize - 2,App.snake.gridSize - 2);
-            ImagePattern imagePattern = new ImagePattern(foodImg);
-            food.setFill(imagePattern);
-            ImageView imageView = new ImageView(foodImg);
+                String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png"};
+                    Random foodGenerator = new Random();
+                    int randomIndex = foodGenerator.nextInt(foodPaths.length);
+                    Image foodImg = new Image(foodPaths[randomIndex]);
+                    food = new Rectangle(App.snake.gridSize - 2, App.snake.gridSize - 2);
+                    ImagePattern imagePattern = new ImagePattern(foodImg);
+                    food.setFill(imagePattern);
+                    ImageView imageView = new ImageView(foodImg);
             //Code for normal rectangles in case the images don't work
             //food = new Rectangle();
             //food.setFill(Color.rgb(35,100,150));

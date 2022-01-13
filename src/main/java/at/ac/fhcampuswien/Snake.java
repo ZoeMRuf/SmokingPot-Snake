@@ -36,7 +36,7 @@ public class Snake extends Node {
 
             //Farbe der Snake festlegen + Kopf-Image (muss noch gegen eine Zeichnung getauscht werden,die ist vom Internet)
             if (i == 0) {
-                Image snakeHead = new Image("/20104643-nice-snake-head-on-the-black-background.jpg");
+                Image snakeHead = new Image("/SnakeHead.png");
                 ImagePattern imagePattern = new ImagePattern(snakeHead);
                 bodyPart.setFill(imagePattern);
                 ImageView imageView = new ImageView(snakeHead);
