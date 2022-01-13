@@ -27,6 +27,9 @@ Open gradle Window:
 - To change the direction of  your Snake use your Cursor Control keys (up, down, left, right)
 
 
+- To pause the game or go back to Home press [Esc]
+
+
 - You win by filling out all fields of the window
 
 
