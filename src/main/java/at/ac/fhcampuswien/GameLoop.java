@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
@@ -11,7 +12,7 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double tickTime = 150;
+    public double tickTime = 200; // * App.score * 20 time dynamisch verändern?
     private boolean spawnFood = false;
     public static Food food = new Food();
     public static boolean snakeMoved = true;

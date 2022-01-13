@@ -100,7 +100,7 @@ public class App extends Application {
         gameOverscoreText.setLayoutX(10);
         gameOverscoreText.setLayoutY(10);
 
-        // End of Game Over inside of GameScene //from Andela: why? why no new Scene, dont know how to fix it
+        // End of Game Over inside of GameScene
 
         layoutGame.getChildren().addAll(root, paneGameOver);
         layoutGame.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
