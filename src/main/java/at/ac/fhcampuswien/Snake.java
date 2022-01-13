@@ -23,7 +23,7 @@ public class Snake extends Node {
 
     //GUI
     //private static Color headColor = Color.rgb(30, 160, 98);
-    private static Color bodyColor = Color.rgb(0, 255, 50);
+    //private static Color bodyColor = Color.rgb(0, 255, 50);
 
     private char direction = 'R';
 
@@ -34,7 +34,7 @@ public class Snake extends Node {
 
             Rectangle bodyPart = new Rectangle();
 
-            //Farbe der Snake festlegen + Kopf-Image (muss noch gegen eine Zeichnung getauscht werden,die ist vom Internet)
+            //Snake-Style
             if (i == 0) {
                 Image snakeHead = new Image("/SnakeHead.png");
                 ImagePattern imagePattern = new ImagePattern(snakeHead);
@@ -42,7 +42,10 @@ public class Snake extends Node {
                 ImageView imageView = new ImageView(snakeHead);
 
             } else {
-                bodyPart.setFill(bodyColor);
+                Image snakeBody = new Image("/Snakebody.png");
+                ImagePattern imagePattern = new ImagePattern(snakeBody);
+                bodyPart.setFill(imagePattern);
+                ImageView imageView = new ImageView(snakeBody);
             }
 
             //Höhe und Breite der Rectangels
@@ -84,7 +87,10 @@ public class Snake extends Node {
          */
 
         Rectangle bodyPart = new Rectangle();
-        bodyPart.setFill(bodyColor);
+        Image snakeBody = new Image("/Snakebody.png");
+        ImagePattern imagePattern = new ImagePattern(snakeBody);
+        bodyPart.setFill(imagePattern);
+        ImageView imageView = new ImageView(snakeBody);
         bodyPart.setWidth(gridSize - 1);
         bodyPart.setHeight(gridSize - 1);
 
