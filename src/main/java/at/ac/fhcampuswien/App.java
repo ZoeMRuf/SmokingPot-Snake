@@ -27,6 +27,8 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import static javafx.scene.paint.Color.*;
+
 
 public class App extends Application {
 
@@ -83,11 +85,11 @@ public class App extends Application {
 
         gameOverText = new Text("Game Over");
         gameOverText.setFont(Font.font ("Courier New", FontWeight.BOLD,60));
-        gameOverText.setFill(Color.rgb(255,3,3));
+        gameOverText.setFill(rgb(255,3,3));
         gameOverText.setLayoutX(10);
         gameOverText.setLayoutY(10);
         gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(Color.rgb(255, 3, 3));
+        gameOverscoreText.setFill(rgb(255, 3, 3));
         gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
         gameOverscoreText.setLayoutX(10);
         gameOverscoreText.setLayoutY(10);
@@ -95,7 +97,7 @@ public class App extends Application {
         // End of Game Over inside of GameScene //from Andela: why? why no new Scene, dont know how to fix it
 
         layoutGame.getChildren().addAll(root, paneGameOver);
-        layoutGame.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
+        layoutGame.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
 
         sceneGame = new Scene(layoutGame, GameSize, GameSize);
 
@@ -128,18 +130,26 @@ public class App extends Application {
         VBox layoutMenu = new VBox();
         layoutMenu.getChildren().addAll(imgView, label, startGame,showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
-        layoutMenu.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN,null,null)));
+        layoutMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN,null,null)));
         layoutMenu.setAlignment(Pos.CENTER);
         layoutMenu.setSpacing(30);
 
         //Pause Menu
         Pane pauseMenu = new Pane();
         Button cont = new Button("Continue");
+        Font contFont = Font.font("Courier New",FontWeight.BOLD,20);
+        cont.setFont(btmFont);
+        cont.setLayoutX(150);
+        cont.setLayoutY(150);
         Button home = new Button("Home");
+        Font homeFont = Font.font("Courier New",FontWeight.BOLD,20);
+        home.setFont(btmFont);
+        home.setLayoutX(185);
+        home.setLayoutY(250);
         Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
-        pauseMenu.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
+        pauseMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN,null,null)));
         pauseMenu.getChildren().addAll(cont, home);
-        home.setLayoutY(GameSize/17);
+        //home.setLayoutY(GameSize/17);
         press.setLayoutX(GameSize/10);
         press.setLayoutY(GameSize/3);
         press.setFont(startG);
@@ -207,7 +217,7 @@ public class App extends Application {
     public static void getNewScoreOnScreen() {
 
         root.getChildren().remove(scoreText);
-        scoreText.setFill(Color.rgb(255, 255, 255));
+        scoreText.setFill(rgb(255, 255, 255));
         scoreText.setFont(Font.font("Courier New", Snake.scale));
         scoreText.setTextOrigin(VPos.BOTTOM);
         scoreText.setTranslateX(0);
