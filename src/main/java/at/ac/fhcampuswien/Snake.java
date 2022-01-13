@@ -1,8 +1,11 @@
 package at.ac.fhcampuswien;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.*;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Snake extends Node {
@@ -15,7 +18,7 @@ public class Snake extends Node {
     public boolean snakeEats;
 
     //GUI
-    private static Color headColor = Color.rgb(30, 160, 98);
+    //private static Color headColor = Color.rgb(30, 160, 98);
     private static Color bodyColor = Color.rgb(0, 255, 50);
 
     private char direction = 'R';
@@ -27,9 +30,13 @@ public class Snake extends Node {
 
             Rectangle bodyPart = new Rectangle();
 
-            //Farbe der Snake festlegen
+            //Farbe der Snake festlegen + Kopf-Image (muss noch gegen eine Zeichnung getauscht werden,die ist vom Internet)
             if (i == 0) {
-                bodyPart.setFill(headColor);
+                Image snakeHead = new Image("/20104643-nice-snake-head-on-the-black-background.jpg");
+                ImagePattern imagePattern = new ImagePattern(snakeHead);
+                bodyPart.setFill(imagePattern);
+                ImageView imageView = new ImageView(snakeHead);
+
             } else {
                 bodyPart.setFill(bodyColor);
             }
