@@ -1,12 +1,15 @@
 package at.ac.fhcampuswien;
 
 import javafx.application.*;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -39,6 +42,7 @@ public class App extends Application {
     public static GameLoop gameLoop;
     public static Text scoreText, gameOverText, gameOverscoreText;
     public static Button playAgain, backToMenu;
+    public static boolean pressed = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -50,6 +54,7 @@ public class App extends Application {
         //Game Scene:
         //Objekts that need to be created
         VBox layoutGame = new VBox();
+        Label press = new Label("Press an arrow key\n   to continue");
         root = new Pane();
 
         scoreText = new Text();
@@ -126,6 +131,68 @@ public class App extends Application {
         layoutMenu.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN,null,null)));
         layoutMenu.setAlignment(Pos.CENTER);
         layoutMenu.setSpacing(30);
+
+        //Pause Menu
+        Pane pauseMenu = new Pane();
+        Button cont = new Button("Continue");
+        Button home = new Button("Home");
+        Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
+        pauseMenu.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
+        pauseMenu.getChildren().addAll(cont, home);
+        home.setLayoutY(GameSize/17);
+        press.setLayoutX(GameSize/10);
+        press.setLayoutY(GameSize/3);
+        press.setFont(startG);
+
+        cont.setOnAction(event -> {
+            GameLoop.paused = true;
+            primaryStage.setScene(sceneGame);
+            root.getChildren().addAll(press);
+        });
+
+        home.setOnAction(event -> {
+            gameLoop.timeLine.stop();
+            root.getChildren().removeAll(snake.getSnakeLengthArr());
+            snake = new Snake();
+            root.getChildren().addAll(snake.getSnakeLengthArr());
+            score = 0;
+            getNewScoreOnScreen();
+            primaryStage.setScene(sceneMenu);
+        });
+
+        sceneGame.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.ESCAPE) {
+                primaryStage.setScene(pauseScene);
+                if(!GameLoop.paused){
+                    gameLoop.timeLine.pause();
+                }
+            }
+
+            switch (key.getCode()) {
+                case DOWN:
+                case LEFT:
+                case RIGHT:
+                case UP:
+                    if (GameLoop.paused){
+                        gameLoop.timeLine.play();
+                        GameLoop.paused = false;
+                        pressed = false;
+                        root.getChildren().removeAll(press);
+                    }
+            }
+        });
+
+        pauseScene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            if (key.getCode() == KeyCode.ESCAPE) {
+                GameLoop.paused = true;
+                primaryStage.setScene(sceneGame);
+                if(!pressed){
+                    root.getChildren().addAll(press);
+                }
+                pressed = true;
+            }
+        });
+
 
         //to display our game
         primaryStage.setTitle("S N A K E");

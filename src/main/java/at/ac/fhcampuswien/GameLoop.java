@@ -12,6 +12,7 @@ public class GameLoop {
     private boolean spawnFood = false;
     public static Food food = new Food();
     public static boolean snakeMoved = true;
+    public static boolean paused = false;
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
