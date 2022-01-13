@@ -47,6 +47,7 @@ public class App extends Application {
     public static Text scoreText, gameOverText, gameOverscoreText;
     public static Button playAgain, backToMenu;
     public static boolean pressed = false;
+    public static HBox heightBox;
 
     public static void main(String[] args) {
         launch(args);
@@ -70,6 +71,8 @@ public class App extends Application {
         paneGameOver.setHgap(20);
         paneGameOver.setVgap(50);
         paneGameOver.setPadding(new Insets(10, 10, 10, 10));
+
+
 
             playAgain = new Button("Play again");
         Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,20);

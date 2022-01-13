@@ -3,6 +3,8 @@ package at.ac.fhcampuswien;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -57,6 +59,11 @@ public class GameLoop {
                 timeLine.stop();
 
                 App.paneGameOver.add(App.gameOverText, 0, 0, 3,2);
+                App.paneGameOver.setAlignment(Pos.CENTER);
+                // Wie schaff ich es, dass das gesamte Teil nicht immer wieder nach unten rutscht beim wiederholten
+                // ausführen???
+
+                App.paneGameOver.setHalignment(App.gameOverText, HPos.CENTER);
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
