@@ -59,20 +59,34 @@ public class App extends Application {
         paneGameOver = new Pane();
 
         playAgain = new Button("Play again");
+        Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,40);
+        playAgain.setFont(playAgainFont);
+        //Pane root = new Pane();
+        playAgain.setLayoutX(10);
+        playAgain.setLayoutY(10);
         playAgain.setOnAction(e -> {
             gameLoop.timeLine.play();
             primaryStage.setScene(sceneGame);
         });
         backToMenu = new Button("Back to Menu");
+        Font btmFont = Font.font("Courier New",FontWeight.BOLD,30);
+        backToMenu.setFont(btmFont);
+        backToMenu.setLayoutX(50);
+        backToMenu.setLayoutY(30);
         backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
 
         gameOverText = new Text("Game Over");
-        gameOverText.setFont(Font.font ("Verdana", 70));
-        gameOverText.setFill(Color.rgb(252,3,3));
+        gameOverText.setFont(Font.font ("Courier New", FontWeight.BOLD,60));
+        gameOverText.setFill(Color.rgb(255,3,3));
+        gameOverText.setLayoutX(10);
+        gameOverText.setLayoutY(10);
         gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(Color.rgb(255, 255, 255));
+        gameOverscoreText.setFill(Color.rgb(255, 3, 3));
         gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-        // End of Game Over inside of GameScene
+        gameOverscoreText.setLayoutX(10);
+        gameOverscoreText.setLayoutY(10);
+
+        // End of Game Over inside of GameScene //from Andela: why? why no new Scene, dont know how to fix it
 
         layoutGame.getChildren().addAll(root, paneGameOver);
         layoutGame.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
@@ -84,7 +98,6 @@ public class App extends Application {
         gameLoop.timeLine.stop();
 
         //Menu scene:
-        //FileInputStream input = new FileInputStream("/snakyTest.png");
         Image snakyTest = new Image("/snakyTest.png");
         ImageView imgView = new ImageView();
         imgView.setImage(snakyTest);
