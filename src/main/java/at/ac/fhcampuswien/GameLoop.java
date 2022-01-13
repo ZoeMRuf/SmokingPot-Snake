@@ -54,7 +54,7 @@ public class GameLoop {
                 App.paneGameOver.setLeft(App.playAgain);
                 App.paneGameOver.setRight(App.backToMenu);
                 App.paneGameOver.setTop(App.gameOverText);
-                App.paneGameOver.setCenter(App.gameOverscoreText);
+                App.paneGameOver.setBottom(App.gameOverscoreText);
                 App.root.getChildren().remove(App.scoreText);
                 App.paneGameOver.getChildren().addAll();
             }
