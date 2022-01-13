@@ -159,6 +159,7 @@ public class App extends Application {
             primaryStage.setScene(sceneGame);
             if(!pressed){
                 root.getChildren().addAll(press);
+                pressed = true;
             }
         });
 
