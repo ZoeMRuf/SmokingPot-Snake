@@ -18,12 +18,15 @@ import java.util.Random;
         Random r = new Random();
 
         public Food() {
-            // You can change the food by putting in mouse or shroom instead of apple as well :)
-            Image apple = new Image("/apple.png");
+            //random Food choice
+            String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png"};
+            Random foodGenerator = new Random();
+            int randomIndex = foodGenerator.nextInt(foodPaths.length);
+            Image foodImg = new Image(foodPaths[randomIndex]);
             food = new Rectangle(App.snake.gridSize - 2,App.snake.gridSize - 2);
-            ImagePattern imagePattern = new ImagePattern(apple);
+            ImagePattern imagePattern = new ImagePattern(foodImg);
             food.setFill(imagePattern);
-            ImageView imageView = new ImageView(apple);
+            ImageView imageView = new ImageView(foodImg);
             //Code for normal rectangles in case the images don't work
             //food = new Rectangle();
             //food.setFill(Color.rgb(35,100,150));
