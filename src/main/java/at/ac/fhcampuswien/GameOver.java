@@ -11,7 +11,7 @@ public class GameOver {
     public static boolean isGameOver = false;
 
 
-    public static boolean snakeHitItSelf(){
+    public static boolean snakeHitItSelf() {
 
         Rectangle bodyPart;
 
@@ -19,7 +19,7 @@ public class GameOver {
 
             bodyPart = App.snake.getSnakeLengthArr()[i];
 
-            if (App.snake.getHead().getX() == bodyPart.getX() && App.snake.getHead().getY() == bodyPart.getY()){
+            if (App.snake.getHead().getX() == bodyPart.getX() && App.snake.getHead().getY() == bodyPart.getY()) {
 
                 isGameOver = true;
 
@@ -30,24 +30,23 @@ public class GameOver {
         return isGameOver;
     }
 
-    public static boolean snakeLeavesGameBoard(){
+    public static boolean snakeLeavesGameBoard() {
 
-        int outOfGame = App.GameSize; //+grid???
+        int outOfGame = App.GameSize;
 
-        if (App.snake.getHead().getX() >= outOfGame || App.snake.getHead().getY() >= outOfGame){
+        if (App.snake.getHead().getX() + App.snake.gridSize >= outOfGame && (App.snake.getDirection() != 'D' || App.snake.getDirection() != 'U')) {
+
+            isGameOver = true;
+        } else if (App.snake.getHead().getY() + App.snake.gridSize >= outOfGame && (App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')) {
 
             isGameOver = true;
 
-        }
-        else if (App.snake.getHead().getX() < 0 || App.snake.getHead().getY() < 0){
-
+        } else if (App.snake.getHead().getX() < 0 || App.snake.getHead().getY() < 0) {
             isGameOver = true;
 
         }
-
         return isGameOver;
+
     }
-
-
 
 }
