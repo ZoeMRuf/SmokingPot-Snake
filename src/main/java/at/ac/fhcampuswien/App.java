@@ -73,9 +73,8 @@ public class App extends Application {
         paneGameOver.setPadding(new Insets(10, 10, 10, 10));
 
 
-
-            playAgain = new Button("Play again");
-        Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,20);
+        playAgain = new Button("Play again");
+        Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 20);
         playAgain.setFont(playAgainFont);
         //Pane root = new Pane();
         playAgain.setLayoutX(10);
@@ -86,15 +85,15 @@ public class App extends Application {
 
         });
         backToMenu = new Button("Back to Menu");
-        Font btmFont = Font.font("Courier New",FontWeight.BOLD,20);
+        Font btmFont = Font.font("Courier New", FontWeight.BOLD, 20);
         backToMenu.setFont(btmFont);
         backToMenu.setLayoutX(10);
         backToMenu.setLayoutY(10);
         backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
 
         gameOverText = new Text("Game Over");
-        gameOverText.setFont(Font.font ("Courier New", FontWeight.BOLD,60));
-        gameOverText.setFill(rgb(255,3,3));
+        gameOverText.setFont(Font.font("Courier New", FontWeight.BOLD, 60));
+        gameOverText.setFill(rgb(255, 3, 3));
         gameOverText.setLayoutX(10);
         gameOverText.setLayoutY(10);
         gameOverscoreText = new Text("Score: " + score);
@@ -106,7 +105,7 @@ public class App extends Application {
         // End of Game Over inside of GameScene
 
         layoutGame.getChildren().addAll(root, paneGameOver);
-        layoutGame.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
+        layoutGame.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
 
         sceneGame = new Scene(layoutGame, GameSize, GameSize);
 
@@ -115,58 +114,60 @@ public class App extends Application {
         gameLoop.timeLine.stop();
 
         //Menu scene:
-        Image snakyTest = new Image("/snakyTest.png");
+
+        Image snakyTest = new Image("/SnakyGreen.png");
         ImageView imgView = new ImageView();
         imgView.setImage(snakyTest);
-        Rectangle2D viewportRect = new Rectangle2D(0,0,150,150);
+        Rectangle2D viewportRect = new Rectangle2D(0, 0, 420, 305);
         imgView.setViewport(viewportRect);
 
+
         Label label = new Label("Welcome to our Version of Snake");
-        Font labelfont = Font.font("Courier New",FontWeight.BOLD,20);
+        Font labelfont = Font.font("Courier New", FontWeight.BOLD, 23);
         label.setFont(labelfont);
         Button startGame = new Button("Start the Game");
-        Font startG = Font.font("Courier New",FontWeight.BOLD,36);
+        Font startG = Font.font("Courier New", FontWeight.BOLD, 36);
         startGame.setFont(startG);
         Button showHighScore = new Button("Show High-score");
-        Font showHS = Font.font("Courier New",FontWeight.BOLD,16);
+        Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
         showHighScore.setFont(showHS);
 
 
-         startGame.setOnAction(event -> {
+        startGame.setOnAction(event -> {
             gameLoop.timeLine.play();
             primaryStage.setScene(sceneGame);
         });
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(imgView, label, startGame,showHighScore);
+        layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
-        layoutMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN,null,null)));
+        layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN,null,null)));
         layoutMenu.setAlignment(Pos.CENTER);
-        layoutMenu.setSpacing(30);
+        layoutMenu.setSpacing(10);
 
         //Pause Menu
         Pane pauseMenu = new Pane();
         Button cont = new Button("Continue");
-        Font contFont = Font.font("Courier New",FontWeight.BOLD,20);
+        Font contFont = Font.font("Courier New", FontWeight.BOLD, 20);
         cont.setFont(btmFont);
         cont.setLayoutX(150);
         cont.setLayoutY(150);
         Button home = new Button("Home");
-        Font homeFont = Font.font("Courier New",FontWeight.BOLD,20);
+        Font homeFont = Font.font("Courier New", FontWeight.BOLD, 20);
         home.setFont(btmFont);
         home.setLayoutX(185);
         home.setLayoutY(250);
         Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
-        pauseMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN,null,null)));
+        pauseMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN, null, null)));
         pauseMenu.getChildren().addAll(cont, home);
         //home.setLayoutY(GameSize/17);
-        press.setLayoutX(GameSize/10);
-        press.setLayoutY(GameSize/3);
+        press.setLayoutX(GameSize / 10);
+        press.setLayoutY(GameSize / 3);
         press.setFont(startG);
 
         cont.setOnAction(event -> {
             GameLoop.paused = true;
             primaryStage.setScene(sceneGame);
-            if(!pressed){
+            if (!pressed) {
                 root.getChildren().addAll(press);
                 pressed = true;
             }
@@ -185,7 +186,7 @@ public class App extends Application {
         sceneGame.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.getCode() == KeyCode.ESCAPE) {
                 primaryStage.setScene(pauseScene);
-                if(!GameLoop.paused){
+                if (!GameLoop.paused) {
                     gameLoop.timeLine.pause();
                 }
             }
@@ -195,7 +196,7 @@ public class App extends Application {
                 case LEFT:
                 case RIGHT:
                 case UP:
-                    if (GameLoop.paused){
+                    if (GameLoop.paused) {
                         gameLoop.timeLine.play();
                         GameLoop.paused = false;
                         pressed = false;
@@ -208,7 +209,7 @@ public class App extends Application {
             if (key.getCode() == KeyCode.ESCAPE) {
                 GameLoop.paused = true;
                 primaryStage.setScene(sceneGame);
-                if(!pressed){
+                if (!pressed) {
                     root.getChildren().addAll(press);
                 }
                 pressed = true;
@@ -218,7 +219,7 @@ public class App extends Application {
 
         //to display our game
         primaryStage.setTitle("S N A K E");
-        primaryStage.getIcons().add(new Image(getClass().getResource("/snakyTest.png").toExternalForm()));
+        primaryStage.getIcons().add(new Image(getClass().getResource("/SnakyWhite.png").toExternalForm()));
         primaryStage.setScene(sceneMenu);
         primaryStage.show();
 

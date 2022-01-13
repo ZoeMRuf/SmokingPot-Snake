@@ -14,7 +14,7 @@ import javafx.util.Duration;
 public class GameLoop {
 
     public Timeline timeLine;
-    public double tickTime = 200; // * App.score * 20 time dynamisch verändern?
+    public double tickTime = 150; // * App.score * 20 time dynamisch verändern?
     private boolean spawnFood = false;
     public static Food food = new Food();
     public static boolean snakeMoved = true;
