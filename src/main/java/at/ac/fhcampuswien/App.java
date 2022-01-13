@@ -67,6 +67,7 @@ public class App extends Application {
         playAgain.setOnAction(e -> {
             gameLoop.timeLine.play();
             primaryStage.setScene(sceneGame);
+
         });
         backToMenu = new Button("Back to Menu");
         Font btmFont = Font.font("Courier New",FontWeight.BOLD,30);

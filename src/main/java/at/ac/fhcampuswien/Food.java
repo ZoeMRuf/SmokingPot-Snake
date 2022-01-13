@@ -20,7 +20,7 @@ import java.util.Random;
         public Food() {
             // You can change the food by putting in mouse or shroom instead of apple as well :)
             Image apple = new Image("/apple.png");
-            food = new Rectangle(24,24);
+            food = new Rectangle(App.snake.gridSize - 2,App.snake.gridSize - 2);
             ImagePattern imagePattern = new ImagePattern(apple);
             food.setFill(imagePattern);
             ImageView imageView = new ImageView(apple);
