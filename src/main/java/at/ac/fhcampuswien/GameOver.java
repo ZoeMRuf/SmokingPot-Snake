@@ -31,13 +31,16 @@ public class GameOver {
     }
 
     public static boolean snakeLeavesGameBoard() {
-
+//Idee für nicht aus dem Fenster fallen
+        //(App.snake.getDirection() != 'D' || App.snake.getDirection() != 'U' || App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')
+        // && (App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')
+        // + App.snake.gridSize nach outOfGame
         int outOfGame = App.GameSize;
 
-        if (App.snake.getHead().getX() + App.snake.gridSize >= outOfGame && (App.snake.getDirection() != 'D' || App.snake.getDirection() != 'U')) {
+        if (App.snake.getHead().getX() >= outOfGame) {
 
             isGameOver = true;
-        } else if (App.snake.getHead().getY() + App.snake.gridSize >= outOfGame && (App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')) {
+        } else if (App.snake.getHead().getY() >= outOfGame) {
 
             isGameOver = true;
 
