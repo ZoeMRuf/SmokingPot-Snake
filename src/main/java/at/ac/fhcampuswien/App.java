@@ -2,6 +2,7 @@ package at.ac.fhcampuswien;
 
 import javafx.application.*;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
@@ -40,7 +41,7 @@ public class App extends Application {
 
     //GUI Variablen
     public static Pane root;
-    public static BorderPane paneGameOver;
+    public static GridPane paneGameOver;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     public static GameLoop gameLoop;
     public static Text scoreText, gameOverText, gameOverscoreText;
@@ -64,9 +65,13 @@ public class App extends Application {
         getNewScoreOnScreen();
 
         //Begin GameOver Scene inside of GameScene:
-        paneGameOver = new BorderPane();
+        paneGameOver = new GridPane();
+        paneGameOver.setAlignment(Pos.CENTER);
+        paneGameOver.setHgap(20);
+        paneGameOver.setVgap(50);
+        paneGameOver.setPadding(new Insets(10, 10, 10, 10));
 
-        playAgain = new Button("Play again");
+            playAgain = new Button("Play again");
         Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,40);
         playAgain.setFont(playAgainFont);
         //Pane root = new Pane();

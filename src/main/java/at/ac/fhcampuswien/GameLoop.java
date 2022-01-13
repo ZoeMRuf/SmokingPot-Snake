@@ -3,6 +3,9 @@ package at.ac.fhcampuswien;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class GameLoop {
@@ -51,12 +54,13 @@ public class GameLoop {
                 GameOver.isGameOver = false;
                 System.out.println("Game Over");
                 timeLine.stop();
-                App.paneGameOver.setLeft(App.playAgain);
-                App.paneGameOver.setRight(App.backToMenu);
-                App.paneGameOver.setTop(App.gameOverText);
-                App.paneGameOver.setBottom(App.gameOverscoreText);
+
+                App.paneGameOver.add(App.gameOverText, 0, 0, 2,2);
+                App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
+                App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
+
+                App.paneGameOver.add(App.gameOverscoreText, 0, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
-                App.paneGameOver.getChildren().addAll();
             }
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
