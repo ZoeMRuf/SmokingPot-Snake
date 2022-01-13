@@ -39,7 +39,8 @@ public class App extends Application {
     public static int score = 0;
 
     //GUI Variablen
-    public static Pane root, paneGameOver;
+    public static Pane root;
+    public static BorderPane paneGameOver;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     public static GameLoop gameLoop;
     public static Text scoreText, gameOverText, gameOverscoreText;
@@ -63,7 +64,7 @@ public class App extends Application {
         getNewScoreOnScreen();
 
         //Begin GameOver Scene inside of GameScene:
-        paneGameOver = new Pane();
+        paneGameOver = new BorderPane();
 
         playAgain = new Button("Play again");
         Font playAgainFont = Font.font("Courier New",FontWeight.BOLD,40);
