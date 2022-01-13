@@ -25,7 +25,7 @@ import java.util.Random;
         public Food() { // hier fehlt mir noch die wiederholung der Random food methode
             //momentan spawned es nur neues Food pro new Game - wer ne Idee?
             //random Food choice
-                String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png", "/Pizza.png", "/banana.png"};
+                String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png", "/Pizza.png", "/banana.png", "/Burger.png", "/Fish.png"};
                     Random foodGenerator = new Random();
                     int randomIndex = foodGenerator.nextInt(foodPaths.length);
                     Image foodImg = new Image(foodPaths[randomIndex]);
