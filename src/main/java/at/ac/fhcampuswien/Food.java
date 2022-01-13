@@ -2,8 +2,10 @@ package at.ac.fhcampuswien;
 
 import javafx.scene.image.Image;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
@@ -16,10 +18,17 @@ import java.util.Random;
         Random r = new Random();
 
         public Food() {
-            food = new Rectangle();
-            food.setFill(Color.rgb(35,100,150));
-            food.setHeight(App.snake.gridSize-foodScale);
-            food.setWidth(App.snake.gridSize-foodScale);
+            // You can change the food by putting in mouse or shroom instead of apple as well :)
+            Image apple = new Image("/apple.png");
+            food = new Rectangle(24,24);
+            ImagePattern imagePattern = new ImagePattern(apple);
+            food.setFill(imagePattern);
+            ImageView imageView = new ImageView(apple);
+            //Code for normal rectangles in case the images don't work
+            //food = new Rectangle();
+            //food.setFill(Color.rgb(35,100,150));
+            //food.setHeight(App.snake.gridSize-foodScale);
+            //food.setWidth(App.snake.gridSize-foodScale);
         }
 
         public int getFoodX() {
