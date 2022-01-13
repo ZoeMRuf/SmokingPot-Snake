@@ -157,7 +157,9 @@ public class App extends Application {
         cont.setOnAction(event -> {
             GameLoop.paused = true;
             primaryStage.setScene(sceneGame);
-            root.getChildren().addAll(press);
+            if(!pressed){
+                root.getChildren().addAll(press);
+            }
         });
 
         home.setOnAction(event -> {
