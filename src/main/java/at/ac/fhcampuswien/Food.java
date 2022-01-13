@@ -22,7 +22,8 @@ import java.util.Random;
         public boolean foodNotInSnake = true;
         Random r = new Random();
 
-        public Food() {
+        public Food() { // hier fehlt mir noch die wiederholung der Random food methode
+            //momentan spawned es nur neues Food pro new Game - wer ne Idee?
             //random Food choice
                 String[] foodPaths = {"/apple.png", "/mouse.png", "/shroom.png"};
                     Random foodGenerator = new Random();
