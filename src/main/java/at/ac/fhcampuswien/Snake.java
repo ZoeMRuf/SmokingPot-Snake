@@ -14,7 +14,7 @@ import javafx.scene.transform.Rotate;
 
 public class Snake extends Node {
     // Variables
-    public static int scale = 18;
+    public static int scale = 20;
     private static int startSize = 2;
     public final int gridSize = App.GameSize / scale;
     public static int nowSnakeSize = startSize;
