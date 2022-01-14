@@ -20,6 +20,7 @@ public class Food {
     public int foodX;
     public int foodY;
     public boolean foodNotInSnake = true;
+    public static boolean spawnedFood = false;
     Random foodGenerator = new Random();
     Random r = new Random();
     String[] foodPaths;

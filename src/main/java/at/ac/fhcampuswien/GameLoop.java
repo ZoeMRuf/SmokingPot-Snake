@@ -70,7 +70,6 @@ public class GameLoop {
 
             if (GameOver.isGameOver) {
 
-                GameOver.isGameOver = false;
                 System.out.println("Game Over");
                 this.timeLine.stop();
 

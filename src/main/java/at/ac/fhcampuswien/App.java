@@ -73,9 +73,10 @@ public class App extends Application {
         playAgain.setLayoutY(10);
         playAgain.setOnAction(event -> {
             root.getChildren().removeAll(snake.getSnakeLengthArr());
+            root.getChildren().remove(Food.food);
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
-
+            GameOver.isGameOver = false;
             paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
             root.getChildren().add(scoreText);
 
@@ -95,9 +96,11 @@ public class App extends Application {
             root.getChildren().removeAll(snake.getSnakeLengthArr());
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
-
+            GameOver.isGameOver = false;
             paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
             root.getChildren().add(scoreText);
+            root.getChildren().removeAll(Food.food);
+            Food.spawnedFood = true;
 
             score = 0;
             getNewScoreOnScreen();
@@ -181,11 +184,17 @@ public class App extends Application {
 */
         //Game Start
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
-        App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
+
+        sceneGame.setOnKeyReleased(event -> {
+            if (!GameOver.isGameOver) {
+                gameLoop.timeLine.play();
+            }
+        });
+
         VBox layoutMenu = new VBox();
         layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
-        layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN,null,null)));
+        layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN, null, null)));
         layoutMenu.setAlignment(Pos.CENTER);
         layoutMenu.setSpacing(10);
 
@@ -250,6 +259,7 @@ public class App extends Application {
                     }
                     if (GameOver.gameOverPlayAgain) {
                         gameLoop.timeLine.play();
+                        root.getChildren().addAll(Food.food);
                         GameOver.gameOverPlayAgain = false;
                     }
             }
