@@ -70,6 +70,25 @@ public class GameLoop {
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
             }
+
+            if (Win.isGameWin) {
+
+                Win.isGameWin = false;
+                System.out.println("You Won!");
+                timeLine.stop();
+
+                App.paneWin.add(App.gameWinText, 0, 0, 3,2);
+                App.paneGameOver.setAlignment(Pos.CENTER);
+                // Wie schaff ich es, dass das gesamte Teil nicht immer wieder nach unten rutscht beim wiederholten
+                // ausführen???
+
+                App.paneWin.setHalignment(App.gameWinText, HPos.CENTER);
+                App.paneWin.add(App.playAgain, 0, 2, 1, 1);
+                App.paneWin.add(App.backToMenu, 2, 2, 1, 1);
+                App.paneWin.add(App.gameOverscoreText, 1, 3, 1, 1);
+                App.root.getChildren().remove(App.scoreText);
+            }
+
         }));
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
