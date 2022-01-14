@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
+import static javafx.scene.paint.Color.rgb;
+
 public class GameLoop {
 
     public Timeline timeLine;
@@ -67,6 +69,11 @@ public class GameLoop {
                 GridPane.setHalignment(App.gameOverText, HPos.CENTER);
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
+                App.gameOverscoreText = new Text("Score: " + App.score);
+                App.gameOverscoreText.setFill(rgb(255, 3, 3));
+                App.gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
+                App.gameOverscoreText.setLayoutX(10);
+                App.gameOverscoreText.setLayoutY(10);
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
             }

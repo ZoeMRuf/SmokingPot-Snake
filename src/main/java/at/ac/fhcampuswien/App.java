@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 
-import javax.print.attribute.standard.Media;
 import java.io.FileNotFoundException;
 
 import static javafx.scene.paint.Color.*;
@@ -51,9 +50,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
 
-        //music
-
-
         //Game Scene:
         //Objekts that need to be created
         VBox layoutGame = new VBox();
@@ -62,6 +58,7 @@ public class App extends Application {
 
         scoreText = new Text();
         getNewScoreOnScreen();
+
 
         //Begin GameOver Scene inside of GameScene:
         paneGameOver = new GridPane();
@@ -118,11 +115,7 @@ public class App extends Application {
         gameOverText.setFill(rgb(255, 3, 3));
         gameOverText.setLayoutX(10);
         gameOverText.setLayoutY(10);
-        gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(rgb(255, 3, 3));
-        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-        gameOverscoreText.setLayoutX(10);
-        gameOverscoreText.setLayoutY(10);
+
 
         // End of Game Over inside of GameScene
 
