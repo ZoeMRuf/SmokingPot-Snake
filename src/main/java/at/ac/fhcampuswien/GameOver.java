@@ -20,13 +20,23 @@ public class GameOver {
             bodyPart = App.snake.getSnakeLengthArr()[i];
 
             if (App.snake.getHead().getX() == bodyPart.getX() && App.snake.getHead().getY() == bodyPart.getY()) {
-
                 isGameOver = true;
 
             }
 
         }
 
+        if (isGameOver){
+            for (int i = 0; i <= App.snake.getSnakeLengthArr().length - 1 ; i++) {
+
+                if(i != App.snake.getSnakeLengthArr().length - 1) {
+                    App.snake.getSnakeLengthArr()[i].setX(App.snake.getSnakeLengthArr()[i + 1].getX());
+                    App.snake.getSnakeLengthArr()[i].setY(App.snake.getSnakeLengthArr()[i + 1].getY());
+                }else{
+                    App.root.getChildren().remove(App.snake.getSnakeLengthArr()[i]);
+                }
+            }
+        }
         return isGameOver;
     }
 
