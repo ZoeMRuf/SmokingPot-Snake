@@ -69,7 +69,7 @@ public class App extends Application {
 
 
         playAgain = new Button("Play again");
-        Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 20);
+        Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 17);
         playAgain.setFont(playAgainFont);
         //Pane root = new Pane();
         playAgain.setLayoutX(10);
@@ -90,7 +90,7 @@ public class App extends Application {
         });
 
         backToMenu = new Button("Back to Menu");
-        Font btmFont = Font.font("Courier New", FontWeight.BOLD, 20);
+        Font btmFont = Font.font("Courier New", FontWeight.BOLD, 17);
         backToMenu.setFont(btmFont);
         backToMenu.setLayoutX(10);
         backToMenu.setLayoutY(10);
