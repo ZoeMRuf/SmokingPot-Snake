@@ -6,9 +6,11 @@ import javafx.animation.Timeline;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 public class GameLoop {
@@ -58,14 +60,11 @@ public class GameLoop {
 
                 GameOver.isGameOver = false;
                 System.out.println("Game Over");
-                timeLine.stop();
+                this.timeLine.stop();
 
                 App.paneGameOver.add(App.gameOverText, 0, 0, 3,2);
                 App.paneGameOver.setAlignment(Pos.CENTER);
-                // Wie schaff ich es, dass das gesamte Teil nicht immer wieder nach unten rutscht beim wiederholten
-                // ausführen???
-
-                App.paneGameOver.setHalignment(App.gameOverText, HPos.CENTER);
+                GridPane.setHalignment(App.gameOverText, HPos.CENTER);
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
@@ -97,7 +96,7 @@ public class GameLoop {
 
     private void getInput() {
         if(snakeMoved){
-            App.sceneGame.setOnKeyReleased(event -> {
+            App.sceneGame.setOnKeyPressed(event -> {
                 switch(event.getCode()) {
                     case RIGHT:
                         if (App.snake.getDirection() != 'L' && snakeMoved){

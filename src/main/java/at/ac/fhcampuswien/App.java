@@ -78,16 +78,40 @@ public class App extends Application {
         playAgain.setLayoutX(10);
         playAgain.setLayoutY(10);
         playAgain.setOnAction(e -> {
-            gameLoop.timeLine.play();
-            primaryStage.setScene(sceneGame);
+            root.getChildren().removeAll(snake.getSnakeLengthArr());
+            snake = new Snake();
+            root.getChildren().addAll(snake.getSnakeLengthArr());
 
+            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
+            root.getChildren().add(scoreText);
+
+            score = 0;
+            getNewScoreOnScreen();
+
+
+            GameOver.gameOverPlayAgain = true;
         });
+
         backToMenu = new Button("Back to Menu");
         Font btmFont = Font.font("Courier New", FontWeight.BOLD, 20);
         backToMenu.setFont(btmFont);
         backToMenu.setLayoutX(10);
         backToMenu.setLayoutY(10);
-        backToMenu.setOnAction(e -> primaryStage.setScene(sceneMenu));
+        backToMenu.setOnAction(event -> {
+            root.getChildren().removeAll(snake.getSnakeLengthArr());
+            snake = new Snake();
+            root.getChildren().addAll(snake.getSnakeLengthArr());
+
+            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
+            root.getChildren().add(scoreText);
+
+            score = 0;
+            getNewScoreOnScreen();
+
+
+            GameOver.gameOverPlayAgain = true;
+            primaryStage.setScene(sceneMenu);
+        });
 
         gameOverText = new Text("Game Over");
         gameOverText.setFont(Font.font("Courier New", FontWeight.BOLD, 60));
@@ -234,6 +258,10 @@ public class App extends Application {
                         GameLoop.paused = false;
                         pressed = false;
                         root.getChildren().removeAll(press);
+                    }
+                    if (GameOver.gameOverPlayAgain) {
+                        gameLoop.timeLine.play();
+                        GameOver.gameOverPlayAgain = false;
                     }
             }
         });

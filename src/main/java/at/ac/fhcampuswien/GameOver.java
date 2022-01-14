@@ -14,6 +14,7 @@ public class GameOver {
 
 
     public static boolean isGameOver = false;
+    public static boolean gameOverPlayAgain = false;
 
 
     public static boolean snakeHitItSelf() {
