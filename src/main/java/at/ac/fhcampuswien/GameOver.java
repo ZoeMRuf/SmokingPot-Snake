@@ -37,19 +37,20 @@ public class GameOver {
         // + App.snake.gridSize nach outOfGame
         int outOfGame = App.GameSize;
 
-        if (App.snake.getHead().getX() >= outOfGame) {
+        if (App.snake.getHead().getX() == (outOfGame - App.snake.gridSize) && App.snake.getDirection() == 'R') {
 
             isGameOver = true;
-        } else if (App.snake.getHead().getY() >= outOfGame) {
+        } else if (App.snake.getHead().getY() == (outOfGame - App.snake.gridSize) && App.snake.getDirection() == 'D') {
 
             isGameOver = true;
 
-        } else if (App.snake.getHead().getX() < 0 || App.snake.getHead().getY() < 0) {
+        } else if (App.snake.getHead().getX() == 0 && App.snake.getDirection() == 'L' ) {
             isGameOver = true;
 
+        }else if(App.snake.getHead().getY() == 0 && App.snake.getDirection() == 'U'){
+            isGameOver = true;
         }
         return isGameOver;
-
     }
 
 }
