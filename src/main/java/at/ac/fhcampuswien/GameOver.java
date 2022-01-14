@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 
 public class GameOver {
 
-    //TODO if Gameover gets Menu Scene (from App) & delete from App button "Test GameOver scene"
+    //TODO snakeHitsitSelf Head is stuck in the snake
 
 
     public static boolean isGameOver = false;
@@ -31,10 +31,7 @@ public class GameOver {
     }
 
     public static boolean snakeLeavesGameBoard() {
-//Idee für nicht aus dem Fenster fallen
-        //(App.snake.getDirection() != 'D' || App.snake.getDirection() != 'U' || App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')
-        // && (App.snake.getDirection() != 'L' || App.snake.getDirection() != 'R')
-        // + App.snake.gridSize nach outOfGame
+
         int outOfGame = App.GameSize;
 
         if (App.snake.getHead().getX() == (outOfGame - App.snake.gridSize) && App.snake.getDirection() == 'R') {

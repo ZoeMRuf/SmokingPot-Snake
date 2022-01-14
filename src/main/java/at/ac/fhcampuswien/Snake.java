@@ -27,7 +27,7 @@ public class Snake extends Node {
 
     private char direction = 'D';
 
-    //Conctuctor for Snake Object
+    //Konstruktor for Snake Object
     public Snake() {
         for (int i = 0; i < nowSnakeSize; i++) {
             //Rectangle erzeugen und befüllen
