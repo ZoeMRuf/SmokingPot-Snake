@@ -33,7 +33,7 @@ public class GameLoop {
             getInput();
             snakeMoved = true;
             GameOver.snakeLeavesGameBoard();
-            Win.GameWin();
+            //Win.GameWin();
             if(!GameOver.isGameOver) {
                 App.snake.moveSnake();
                 App.snake.doesSnakeEat();
