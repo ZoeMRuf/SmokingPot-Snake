@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 import static javafx.scene.paint.Color.*;
 
 
-public class App<wonText> extends Application {
+public class App extends Application {
 
     //Alle Variablen die wir später brauchen
     public static Snake snake;
@@ -37,10 +37,9 @@ public class App<wonText> extends Application {
     //GUI Variablen
     public static Pane root;
     public static GridPane paneGameOver;
-    public static GridPane paneWon;
-    public static Scene sceneGame, sceneMenu, sceneGameOver, sceneWon;
+    public static Scene sceneGame, sceneMenu, sceneGameOver;
     public static GameLoop gameLoop;
-    public static Text scoreText, gameOverText, gameOverscoreText, wonText, wonScoreText;
+    public static Text scoreText, gameOverText, gameOverscoreText;
     public static Button playAgain, backToMenu;
     public static boolean pressed = false;
     public static HBox heightBox;
