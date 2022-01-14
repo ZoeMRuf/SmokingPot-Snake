@@ -1,7 +1,6 @@
 package at.ac.fhcampuswien;
 
 import javafx.application.*;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -12,20 +11,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
 
 
-import javax.swing.*;
-import java.io.FileInputStream;
+import javax.print.attribute.standard.Media;
 import java.io.FileNotFoundException;
 
 import static javafx.scene.paint.Color.*;
@@ -55,6 +50,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
+
+        //music
+
 
         //Game Scene:
         //Objekts that need to be created

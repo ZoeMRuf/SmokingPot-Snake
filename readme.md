@@ -2,22 +2,6 @@
 Open gradle Window:
 - View -> Window Tools -> Gradle
 - In window -> Tasks -> Application -> run
-    
-    
-#### Helpful Links
-[Getting Started with JavaFX](https://openjfx.io/openjfx-docs/#gradle)
-
-[JavaFX Programm mit Gradle](https://kofler.info/javafx-programm-mit-gradle/)
-
-
-
-[General](https://stackoverflow.com/)
-[General](https://www.geeksforgeeks.org/)
-[General](https://www.javatpoint.com/)
-[General](https://docs.oracle.com/)
-[Video - Snake](https://www.youtube.com/watch?v=H9WjCyPFOug)
-[Video - Snake](https://www.youtube.com/watch?v=VmChebZcb2U&t=1202s)
-[Video - Scenes](https://www.youtube.com/watch?v=7LxWQIDOzyE)
 
 
 ### How to play the Game
@@ -47,5 +31,21 @@ Open gradle Window:
 
 #### Have fun with the best Snake and don't get sneaky!
 #
+
+
+#### Helpful Links
+[Getting Started with JavaFX](https://openjfx.io/openjfx-docs/#gradle)
+
+[JavaFX Programm mit Gradle](https://kofler.info/javafx-programm-mit-gradle/)
+
+[Music](https://www.bensound.com/)
+
+[General](https://stackoverflow.com/)
+[General](https://www.geeksforgeeks.org/)
+[General](https://www.javatpoint.com/)
+[General](https://docs.oracle.com/)
+[Video - Snake](https://www.youtube.com/watch?v=H9WjCyPFOug)
+[Video - Snake](https://www.youtube.com/watch?v=VmChebZcb2U&t=1202s)
+[Video - Scenes](https://www.youtube.com/watch?v=7LxWQIDOzyE)
 
 © Simon Liewald, Andela Maksimovic, Christina Moser, Daniel Obatola, Konstantin Papirnik, Marlene Zoe Ruf

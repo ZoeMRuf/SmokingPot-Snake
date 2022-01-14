@@ -118,15 +118,19 @@ public class Snake extends Node {
         switch(direction){
             case 'R':
                 this.getHead().setX(this.getHead().getX() + gridSize);
+                this.getHead().setRotate(-90);
                 break;
             case 'L':
                 this.getHead().setX(this.getHead().getX() - gridSize);
+                this.getHead().setRotate(90);
                 break;
             case 'U':
                 this.getHead().setY(this.getHead().getY() - gridSize);
+                this.getHead().setRotate(180);
                 break;
             case 'D':
                 this.getHead().setY(this.getHead().getY() + gridSize);
+                this.getHead().setRotate(0);
                 break;
         }
     }
