@@ -13,6 +13,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 import static javafx.scene.paint.Color.rgb;
 
 public class GameLoop {
@@ -23,6 +29,9 @@ public class GameLoop {
     public static Food food = new Food();
     public static boolean snakeMoved = true;
     public static boolean paused = false;
+    public File file;
+    public int highScore;
+
 
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
@@ -70,11 +79,9 @@ public class GameLoop {
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
                 //to get current Score in GameOverscoreText:
-                App.gameOverscoreText = new Text("Score: " + App.score);
+                forHighscore();
+                getGameOverscoreText();
                 App.gameOverscoreText.setFill(rgb(255, 3, 3));
-                App.gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-                App.gameOverscoreText.setLayoutX(10);
-                App.gameOverscoreText.setLayoutY(10);
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
             }
@@ -93,6 +100,9 @@ public class GameLoop {
                 App.paneWin.setHalignment(App.gameWinText, HPos.CENTER);
                 App.paneWin.add(App.playAgain, 0, 2, 1, 1);
                 App.paneWin.add(App.backToMenu, 2, 2, 1, 1);
+                forHighscore();
+                getGameOverscoreText();
+                App.gameOverscoreText.setFill(rgb(30, 160, 98));
                 App.paneWin.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
             }
@@ -134,4 +144,53 @@ public class GameLoop {
             });
         }
     }
+
+    private void getGameOverscoreText() {
+        App.gameOverscoreText = new Text("Your score: " + App.score + "\nHigh score: " + highScore);
+        App.gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
+        App.gameOverscoreText.setLayoutX(10);
+        App.gameOverscoreText.setLayoutY(10);
+    }
+
+    //method for everything about highscore - reference: https://www.w3schools.com/java/java_files_create.asp
+    private void forHighscore() {
+
+        //create file highscore
+        try {
+            file = new File("highscore.txt");
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        //write into file
+        try {
+            FileWriter myWriter = new FileWriter(file.getName());
+            myWriter.write(new StringBuilder().append(App.score).append("\n").toString());
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        //read file
+        try {
+            Scanner myReader = new Scanner(file);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                highScore = Integer.parseInt(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
 }
