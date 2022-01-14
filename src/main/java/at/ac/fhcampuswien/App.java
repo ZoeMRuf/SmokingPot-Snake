@@ -151,11 +151,12 @@ public class App extends Application {
         showHighScore.setFont(showHS);
 
         //Test for Win condition
-
+/*
         Button testWin = new Button("Test Win");
         Font showTestWin = Font.font("Courier New", FontWeight.BOLD, 16);
         testWin.setFont(showTestWin);
-/*
+        testWin.setOnKeyReleased(event -> score = 323);
+
         testWin.setOnAction(event -> primaryStage.setScene(sceneGame));
         App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
         VBox layoutMenuTest = new VBox();
@@ -170,7 +171,7 @@ public class App extends Application {
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
         App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore, testWin);
+        layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
         layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN,null,null)));
         layoutMenu.setAlignment(Pos.CENTER);
