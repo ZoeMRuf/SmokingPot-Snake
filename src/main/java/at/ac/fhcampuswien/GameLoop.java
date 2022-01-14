@@ -36,8 +36,8 @@ public class GameLoop {
             if(!GameOver.isGameOver) {
                 App.snake.moveSnake();
                 App.snake.doesSnakeEat();
+                GameOver.snakeHitItSelf();
             }
-            GameOver.snakeHitItSelf();
 
 
             if (App.snake.snakeEats) {
