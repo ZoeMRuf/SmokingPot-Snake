@@ -115,8 +115,6 @@ public class App extends Application {
         gameOverText.setFill(rgb(255, 3, 3));
         gameOverText.setLayoutX(10);
         gameOverText.setLayoutY(10);
-
-
         // End of Game Over inside of GameScene
 
         //Begin Game Win Scene inside of GameScene:

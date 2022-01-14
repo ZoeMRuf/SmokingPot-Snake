@@ -69,6 +69,7 @@ public class GameLoop {
                 GridPane.setHalignment(App.gameOverText, HPos.CENTER);
                 App.paneGameOver.add(App.playAgain, 0, 2, 1, 1);
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
+                //to get current Score in GameOverscoreText:
                 App.gameOverscoreText = new Text("Score: " + App.score);
                 App.gameOverscoreText.setFill(rgb(255, 3, 3));
                 App.gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
