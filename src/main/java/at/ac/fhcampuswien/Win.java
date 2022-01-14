@@ -8,7 +8,7 @@ public class Win {
 
     public static boolean GameWin() {
 
-        if (App.score == 324) {
+        if (App.score == 324-1) {
             isGameWin = true;
         }
         return isGameWin;
