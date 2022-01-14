@@ -48,4 +48,3 @@ Open gradle Window:
 [Video - Snake](https://www.youtube.com/watch?v=VmChebZcb2U&t=1202s)
 [Video - Scenes](https://www.youtube.com/watch?v=7LxWQIDOzyE)
 
-© Simon Liewald, Andela Maksimovic, Christina Moser, Daniel Obatola, Konstantin Papirnik, Marlene Zoe Ruf
