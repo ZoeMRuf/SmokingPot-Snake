@@ -1,10 +1,7 @@
 package at.ac.fhcampuswien;
 
 import javafx.application.*;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.geometry.VPos;
+import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -74,7 +71,7 @@ public class App extends Application {
         //Pane root = new Pane();
         playAgain.setLayoutX(10);
         playAgain.setLayoutY(10);
-        playAgain.setOnAction(e -> {
+        playAgain.setOnAction(event -> {
             root.getChildren().removeAll(snake.getSnakeLengthArr());
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
@@ -224,6 +221,7 @@ public class App extends Application {
         home.setOnAction(event -> {
             gameLoop.timeLine.stop();
             root.getChildren().removeAll(snake.getSnakeLengthArr());
+            root.getChildren().removeAll(press);
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
             score = 0;
@@ -263,8 +261,8 @@ public class App extends Application {
                 primaryStage.setScene(sceneGame);
                 if (!pressed) {
                     root.getChildren().addAll(press);
+                    pressed = true;
                 }
-                pressed = true;
             }
         });
 

@@ -52,8 +52,8 @@ public class Snake extends Node {
             bodyPart.setHeight(gridSize - 1);
             bodyPart.setWidth(gridSize - 1);
 
-            bodyPart.setX(gridSize * (scale/2));
-            bodyPart.setY(gridSize * scale/2 *(nowSnakeSize - 1) - i * gridSize);
+            bodyPart.setX(gridSize * (scale / 2));
+            bodyPart.setY(gridSize * scale / 2 * (nowSnakeSize - 1) - i * gridSize);
             snakeLengthArr[i] = bodyPart;
         }
     }
@@ -62,7 +62,7 @@ public class Snake extends Node {
         return snakeLengthArr;
     }
 
-    public Rectangle getHead(){
+    public Rectangle getHead() {
         return this.getSnakeLengthArr()[0];
     }
 
@@ -95,8 +95,8 @@ public class Snake extends Node {
         bodyPart.setHeight(gridSize - 1);
 
         //so this rectangle is out of the GameBoard, when it's created
-        bodyPart.setX(- gridSize);
-        bodyPart.setY(- gridSize);
+        bodyPart.setX(-gridSize);
+        bodyPart.setY(-gridSize);
 
         snakeNextSizeArray[snakeLengthArr.length] = bodyPart;
 
@@ -106,36 +106,40 @@ public class Snake extends Node {
         pane.getChildren().addAll(bodyPart);
     }
 
-    public void moveSnake(){
+    public void moveSnake() {
 
-        //Body
-        for (int i = this.getSnakeLengthArr().length - 1; i > 0 ; i--) {
-            this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i-1].getX());
-            this.getSnakeLengthArr()[i].setY(getSnakeLengthArr()[i-1].getY());
+        if (!GameLoop.paused) {
+            //Body
+            for (int i = this.getSnakeLengthArr().length - 1; i > 0; i--) {
+                this.getSnakeLengthArr()[i].setX(getSnakeLengthArr()[i - 1].getX());
+                this.getSnakeLengthArr()[i].setY(getSnakeLengthArr()[i - 1].getY());
+            }
         }
 
-        //Head
-        switch(direction){
-            case 'R':
-                this.getHead().setX(this.getHead().getX() + gridSize);
-                this.getHead().setRotate(-90);
-                break;
-            case 'L':
-                this.getHead().setX(this.getHead().getX() - gridSize);
-                this.getHead().setRotate(90);
-                break;
-            case 'U':
-                this.getHead().setY(this.getHead().getY() - gridSize);
-                this.getHead().setRotate(180);
-                break;
-            case 'D':
-                this.getHead().setY(this.getHead().getY() + gridSize);
-                this.getHead().setRotate(0);
-                break;
+        if (!GameLoop.paused) {
+            //Head
+            switch (direction) {
+                case 'R':
+                    this.getHead().setX(this.getHead().getX() + gridSize);
+                    this.getHead().setRotate(-90);
+                    break;
+                case 'L':
+                    this.getHead().setX(this.getHead().getX() - gridSize);
+                    this.getHead().setRotate(90);
+                    break;
+                case 'U':
+                    this.getHead().setY(this.getHead().getY() - gridSize);
+                    this.getHead().setRotate(180);
+                    break;
+                case 'D':
+                    this.getHead().setY(this.getHead().getY() + gridSize);
+                    this.getHead().setRotate(0);
+                    break;
+            }
         }
     }
 
-    public void doesSnakeEat () {
+    public void doesSnakeEat() {
         snakeEats = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
                 (GameLoop.food.getFoodY())));
     }
