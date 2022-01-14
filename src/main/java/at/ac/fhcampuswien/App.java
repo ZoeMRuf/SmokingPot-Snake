@@ -155,7 +155,7 @@ public class App extends Application {
         Button testWin = new Button("Test Win");
         Font showTestWin = Font.font("Courier New", FontWeight.BOLD, 16);
         testWin.setFont(showTestWin);
-
+/*
         testWin.setOnAction(event -> primaryStage.setScene(sceneGame));
         App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
         VBox layoutMenuTest = new VBox();
@@ -165,7 +165,7 @@ public class App extends Application {
         layoutMenuTest.setAlignment(Pos.CENTER);
         layoutMenuTest.setSpacing(10);
         score = 323;
-
+*/
         //Game Start
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
         App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
