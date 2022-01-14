@@ -132,11 +132,9 @@ public class App extends Application {
         Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
         showHighScore.setFont(showHS);
 
-
-        startGame.setOnAction(event -> {
-            gameLoop.timeLine.play();
-            primaryStage.setScene(sceneGame);
-        });
+        //Game Start
+        startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
+        App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
         VBox layoutMenu = new VBox();
         layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);

@@ -25,7 +25,7 @@ public class Snake extends Node {
     //private static Color headColor = Color.rgb(30, 160, 98);
     //private static Color bodyColor = Color.rgb(0, 255, 50);
 
-    private char direction = 'R';
+    private char direction = 'D';
 
     //Conctuctor for Snake Object
     public Snake() {
@@ -52,8 +52,8 @@ public class Snake extends Node {
             bodyPart.setHeight(gridSize - 1);
             bodyPart.setWidth(gridSize - 1);
 
-            bodyPart.setX(gridSize * (nowSnakeSize - 1) - i * gridSize);
-
+            bodyPart.setX(gridSize * (scale/2));
+            bodyPart.setY(gridSize * scale/2 *(nowSnakeSize - 1) - i * gridSize);
             snakeLengthArr[i] = bodyPart;
         }
     }
