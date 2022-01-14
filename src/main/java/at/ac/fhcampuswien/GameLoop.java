@@ -23,7 +23,7 @@ public class GameLoop {
     public GameLoop() {
         this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
             //what needs to be repeated for the game to work
-            System.out.println(App.snake.getHead().getX());
+
             //set first food
             if (!spawnFood){
                 food.setRandomFood(App.root);
