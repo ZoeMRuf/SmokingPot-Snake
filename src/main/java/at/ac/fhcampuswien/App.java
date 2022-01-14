@@ -36,10 +36,10 @@ public class App extends Application {
 
     //GUI Variablen
     public static Pane root;
-    public static GridPane paneGameOver;
+    public static GridPane paneGameOver, paneWin;
     public static Scene sceneGame, sceneMenu, sceneGameOver;
     public static GameLoop gameLoop;
-    public static Text scoreText, gameOverText, gameOverscoreText;
+    public static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
     public static Button playAgain, backToMenu;
     public static boolean pressed = false;
     public static HBox heightBox;
@@ -102,7 +102,27 @@ public class App extends Application {
 
         // End of Game Over inside of GameScene
 
-        layoutGame.getChildren().addAll(root, paneGameOver);
+        //Begin Game Win Scene inside of GameScene:
+        paneWin = new GridPane();
+        paneWin.setAlignment(Pos.CENTER);
+        paneWin.setHgap(20);
+        paneWin.setVgap(50);
+        paneWin.setPadding(new Insets(10, 10, 10, 10));
+
+        gameWinText = new Text("You Won!");
+        gameWinText.setFont(Font.font("Courier New", FontWeight.BOLD, 60));
+        gameWinText.setFill(rgb(3, 150, 3));
+        gameWinText.setLayoutX(10);
+        gameWinText.setLayoutY(10);
+        gameOverscoreText = new Text("Score: " + score);
+        gameOverscoreText.setFill(rgb(3, 150, 3));
+        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
+        gameOverscoreText.setLayoutX(10);
+        gameOverscoreText.setLayoutY(10);
+
+        // End of Game Win inside of GameScene
+
+        layoutGame.getChildren().addAll(root, paneGameOver, paneWin);
         layoutGame.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
 
         sceneGame = new Scene(layoutGame, GameSize, GameSize);
