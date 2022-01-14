@@ -115,7 +115,7 @@ public class App extends Application {
         gameWinText.setLayoutX(10);
         gameWinText.setLayoutY(10);
         gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(rgb(3, 150, 3));
+        gameOverscoreText.setFill(rgb(255, 3, 3));
         gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
         gameOverscoreText.setLayoutX(10);
         gameOverscoreText.setLayoutY(10);
