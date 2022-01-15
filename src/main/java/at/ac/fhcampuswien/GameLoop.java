@@ -163,7 +163,6 @@ public class GameLoop {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
         readFile();
 
         //write into file
