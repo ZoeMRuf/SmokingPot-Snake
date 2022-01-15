@@ -211,7 +211,7 @@ public class App extends Application {
         home.setLayoutX(185);
         home.setLayoutY(250);
         Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
-        pauseMenu.setBackground(new Background(new BackgroundFill(LIMEGREEN, null, null)));
+        pauseMenu.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
         pauseMenu.getChildren().addAll(cont, home);
         //home.setLayoutY(GameSize/17);
         press.setLayoutX(GameSize / 10);
