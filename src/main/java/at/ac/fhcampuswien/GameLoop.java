@@ -26,8 +26,8 @@ public class GameLoop {
     public static Food food = new Food();
     public static boolean snakeMoved = true;
     public static boolean paused = false;
-    public File file, fileTest;
-    public int highScore, testHighScore;
+    public File file;
+    public int highScore;
 
 
     public GameLoop() {
@@ -153,31 +153,21 @@ public class GameLoop {
 
         //create file highscore
         try {
-            fileTest = new File("highscoretest.txt");
             file = new File("highscore.txt");
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
             } else {
                 System.out.println("File already exists.");
             }
-            if (fileTest.createNewFile()) {
-                System.out.println("FileTest created: " + file.getName());
-            } else {
-                System.out.println("FileTest already exists.");
-            }
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
         readFile();
 
         //write into file
         try {
-            PrintWriter writeTest = new PrintWriter(fileTest);
             PrintWriter write = new PrintWriter(file);
-            writeTest.println(testHighScore);
-            writeTest.close();
             write.println(highScore);
             write.close();
             System.out.println("Successfully wrote to the file.");
@@ -189,56 +179,7 @@ public class GameLoop {
     }
 
     private void readFile () {
-        //fileTest
-        try  {
-            BufferedReader readerTest = new BufferedReader(new FileReader(fileTest));
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String lineTest = readerTest.readLine();
-            String line = reader.readLine();
 
-            //test read line
-            while (lineTest != null)
-            {
-                try {
-                    int isHighScoreOrNot = Integer.parseInt(line.trim());
-
-                    if (isHighScoreOrNot < App.score)
-                    {
-                        testHighScore = App.score;
-                    }
-
-                    lineTest = readerTest.readLine();
-                } catch (NumberFormatException e1) {
-
-                }
-
-            }
-            readerTest.close();
-
-            //read line
-            while (line != null)
-            {
-                try {
-                    int isHighScoreOrNot = Integer.parseInt(line.trim());
-
-                    if (isHighScoreOrNot < testHighScore)
-                    {
-                        highScore = testHighScore;
-                    }
-
-                    line = reader.readLine();
-                } catch (NumberFormatException e1) {
-
-                }
-
-            }
-            readerTest.close();
-
-        } catch (IOException ex) {
-            System.err.println("ERROR reading scores from file");
-        }
-
-        //file
         try  {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
