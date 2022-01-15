@@ -201,15 +201,16 @@ public class App extends Application {
         //Pause Menu
         Pane pauseMenu = new Pane();
         Button cont = new Button("Continue");
-        Font contFont = Font.font("Courier New", FontWeight.BOLD, 20);
+        Font contFont = Font.font("Courier New", FontWeight.BOLD, 30);
         cont.setFont(btmFont);
-        cont.setLayoutX(150);
+        cont.setLayoutX(190);
         cont.setLayoutY(150);
         Button home = new Button("Home");
-        Font homeFont = Font.font("Courier New", FontWeight.BOLD, 20);
+        Font homeFont = Font.font("Courier New", FontWeight.BOLD, 30);
         home.setFont(btmFont);
-        home.setLayoutX(185);
+        home.setLayoutX(210);
         home.setLayoutY(250);
+
         Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
         pauseMenu.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
         pauseMenu.getChildren().addAll(cont, home);
