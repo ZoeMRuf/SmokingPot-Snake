@@ -13,10 +13,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 import static javafx.scene.paint.Color.rgb;
@@ -168,28 +165,45 @@ public class GameLoop {
             e.printStackTrace();
         }
 
+        readFile();
+
         //write into file
         try {
-            FileWriter myWriter = new FileWriter(file.getName());
-            myWriter.write(new StringBuilder().append(App.score).append("\n").toString());
-            myWriter.close();
+            PrintWriter write = new PrintWriter(file);
+            write.println(highScore);
+            write.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
 
-        //read file
-        try {
-            Scanner myReader = new Scanner(file);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                highScore = Integer.parseInt(data);
+    }
+
+    private void readFile () {
+        try  {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
+            while (line != null)
+            {
+                try {
+                    int isHighScoreOrNot = Integer.parseInt(line.trim());
+
+                    if (isHighScoreOrNot < App.score)
+                    {
+                        highScore = App.score;
+                    }
+
+                    line = reader.readLine();
+                } catch (NumberFormatException e1) {
+
+                }
+
             }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            reader.close();
+
+        } catch (IOException ex) {
+            System.err.println("ERROR reading scores from file");
         }
     }
 
