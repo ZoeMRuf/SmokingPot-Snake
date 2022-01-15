@@ -35,10 +35,10 @@ public class GameOver {
 
         int outOfGame = App.GameSize;
 
-        if (App.snake.getHead().getX() == (outOfGame - App.snake.gridSize) && App.snake.getDirection() == 'R') {
+        if (App.snake.getHead().getX() == (outOfGame - App.snake.GRID_SIZE) && App.snake.getDirection() == 'R') {
 
             isGameOver = true;
-        } else if (App.snake.getHead().getY() == (outOfGame - App.snake.gridSize) && App.snake.getDirection() == 'D') {
+        } else if (App.snake.getHead().getY() == (outOfGame - App.snake.GRID_SIZE) && App.snake.getDirection() == 'D') {
 
             isGameOver = true;
 

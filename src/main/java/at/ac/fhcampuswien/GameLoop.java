@@ -14,7 +14,7 @@ import static javafx.scene.paint.Color.rgb;
 public class GameLoop {
 
     public Timeline timeLine;
-    private final double TICKTIME = 150; // * App.score * 20 time dynamisch verändern?
+    private final double TICK_TIME = 150;
     private boolean spawnFood = false;
     public static Food food = new Food();
     public static boolean snakeMoved = true;
@@ -24,7 +24,7 @@ public class GameLoop {
 
 
     public GameLoop() {
-        this.timeLine = new Timeline(new KeyFrame(Duration.millis(TICKTIME), event -> {
+        this.timeLine = new Timeline(new KeyFrame(Duration.millis(TICK_TIME), event -> {
             //what needs to be repeated for the game to work
 
             //set first food

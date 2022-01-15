@@ -1,7 +1,6 @@
 package at.ac.fhcampuswien;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -32,13 +31,13 @@ public class Food {
 
         //so food does not spawn outside of GameBoard
         do {
-            randomX = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale / 2;
-            randomY = r.nextInt(Snake.scale) * App.snake.gridSize + foodScale / 2;
+            randomX = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + foodScale / 2;
+            randomY = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + foodScale / 2;
         }
         while (randomX < 0 || randomX >= App.GameSize || randomY < 0 || randomY >= App.GameSize);
 
         //Image for Food
-        food = new Rectangle(App.snake.gridSize - 2, App.snake.gridSize - 2);
+        food = new Rectangle(App.snake.GRID_SIZE - 2, App.snake.GRID_SIZE - 2);
         foodPaths = new String[]{"/Burger.png", "/Fish.png", "/Pizza.png", "/apple.png", "/banana.png", "/mouse.png", "/shroom.png"};
         int randomIndex = r.nextInt(foodPaths.length);
         Image foodImg = new Image(foodPaths[randomIndex]);

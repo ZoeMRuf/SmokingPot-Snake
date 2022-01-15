@@ -8,34 +8,26 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Snake extends Node {
-    // Variables
     public static int scale = 20;
-    private static int startSize = 2;
-    public final int gridSize = App.GameSize / scale;
-    public static int nowSnakeSize = startSize;
+    private final static int START_SIZE = 2;
+    public final int GRID_SIZE = App.GameSize / scale;
+    public static int nowSnakeSize = START_SIZE;
     private Rectangle[] snakeLengthArr = new Rectangle[nowSnakeSize];
     public boolean snakeEats;
 
-    //GUI
-    //private static Color headColor = Color.rgb(30, 160, 98);
-    //private static Color bodyColor = Color.rgb(0, 255, 50);
-
     private char direction = 'D';
 
-    //Konstruktor for Snake Object
+    //Constructor for Snake Object
     public Snake() {
         for (int i = 0; i < nowSnakeSize; i++) {
-            //Rectangle erzeugen und befüllen
-
+            //Create and fill Rectangle
             Rectangle bodyPart = new Rectangle();
-
             //Snake-Style
             if (i == 0) {
                 Image snakeHead = new Image("/SnakeHead.png");
                 ImagePattern imagePattern = new ImagePattern(snakeHead);
                 bodyPart.setFill(imagePattern);
                 ImageView imageView = new ImageView(snakeHead);
-
             } else {
                 Image snakeBody = new Image("/Snakebody.png");
                 ImagePattern imagePattern = new ImagePattern(snakeBody);
@@ -43,15 +35,17 @@ public class Snake extends Node {
                 ImageView imageView = new ImageView(snakeBody);
             }
 
-            //Höhe und Breite der Rectangels
-            bodyPart.setHeight(gridSize - 1);
-            bodyPart.setWidth(gridSize - 1);
+            //Height and Width of Rectangles
+            bodyPart.setHeight(GRID_SIZE - 1);
+            bodyPart.setWidth(GRID_SIZE - 1);
 
-            bodyPart.setX(gridSize * (scale / 2));
-            bodyPart.setY(gridSize * scale / 2 * (nowSnakeSize - 1) - i * gridSize);
+            bodyPart.setX(GRID_SIZE * (scale / 2));
+            bodyPart.setY(GRID_SIZE * scale / 2 * (nowSnakeSize - 1) - i * GRID_SIZE);
             snakeLengthArr[i] = bodyPart;
         }
     }
+
+    //Getter and Setter for snake
 
     public Rectangle[] getSnakeLengthArr() {
         return snakeLengthArr;
@@ -72,7 +66,6 @@ public class Snake extends Node {
     //add a new BodyPart to the snake Array
     public void addBodyPart(Pane pane) {
         Rectangle[] snakeNextSizeArray = new Rectangle[snakeLengthArr.length + 1];
-
         System.arraycopy(snakeLengthArr, 0, snakeNextSizeArray, 0, snakeLengthArr.length);
 
         /*Long Version from Arraycopy
@@ -86,12 +79,12 @@ public class Snake extends Node {
         ImagePattern imagePattern = new ImagePattern(snakeBody);
         bodyPart.setFill(imagePattern);
         ImageView imageView = new ImageView(snakeBody);
-        bodyPart.setWidth(gridSize - 1);
-        bodyPart.setHeight(gridSize - 1);
+        bodyPart.setWidth(GRID_SIZE - 1);
+        bodyPart.setHeight(GRID_SIZE - 1);
 
         //so this rectangle is out of the GameBoard, when it's created
-        bodyPart.setX(-gridSize);
-        bodyPart.setY(-gridSize);
+        bodyPart.setX(-GRID_SIZE);
+        bodyPart.setY(-GRID_SIZE);
 
         snakeNextSizeArray[snakeLengthArr.length] = bodyPart;
 
@@ -102,7 +95,6 @@ public class Snake extends Node {
     }
 
     public void moveSnake() {
-
         if (!GameLoop.paused) {
             //Body
             for (int i = this.getSnakeLengthArr().length - 1; i > 0; i--) {
@@ -115,19 +107,19 @@ public class Snake extends Node {
             //Head
             switch (direction) {
                 case 'R':
-                    this.getHead().setX(this.getHead().getX() + gridSize);
+                    this.getHead().setX(this.getHead().getX() + GRID_SIZE);
                     this.getHead().setRotate(-90);
                     break;
                 case 'L':
-                    this.getHead().setX(this.getHead().getX() - gridSize);
+                    this.getHead().setX(this.getHead().getX() - GRID_SIZE);
                     this.getHead().setRotate(90);
                     break;
                 case 'U':
-                    this.getHead().setY(this.getHead().getY() - gridSize);
+                    this.getHead().setY(this.getHead().getY() - GRID_SIZE);
                     this.getHead().setRotate(180);
                     break;
                 case 'D':
-                    this.getHead().setY(this.getHead().getY() + gridSize);
+                    this.getHead().setY(this.getHead().getY() + GRID_SIZE);
                     this.getHead().setRotate(0);
                     break;
             }
@@ -138,5 +130,4 @@ public class Snake extends Node {
         snakeEats = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
                 (GameLoop.food.getFoodY())));
     }
-
 }
