@@ -26,8 +26,6 @@ Open gradle Window:
 - Also we are not liable for this game crashing your computer and burning your entire house down until you got nothing left
 
 
-- For checking your ranking on the Highscore chart hit Show High-Score in the main menu
-
 
 #### Have fun with the best Snake and don't get sneaky!
 #
