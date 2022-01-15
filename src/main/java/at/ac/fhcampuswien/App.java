@@ -162,9 +162,9 @@ public class App extends Application {
         Button startGame = new Button("Start the Game");
         Font startG = Font.font("Courier New", FontWeight.BOLD, 36);
         startGame.setFont(startG);
-        //Button showHighScore = new Button("Show High-score");
-        //Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
-        //showHighScore.setFont(showHS);
+        Button showHighScore = new Button("Show High-score");
+        Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
+        showHighScore.setFont(showHS);
 
         //Test for Win condition
 /*
@@ -193,7 +193,7 @@ public class App extends Application {
         });
 
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(imgView, label, startGame);
+        layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
         layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN, null, null)));
         layoutMenu.setAlignment(Pos.CENTER);
