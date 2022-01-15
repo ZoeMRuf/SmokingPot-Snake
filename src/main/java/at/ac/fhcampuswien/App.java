@@ -40,6 +40,7 @@ public class App extends Application {
     public static boolean pressed = false;
     public static HBox heightBox;
 
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -282,6 +283,7 @@ public class App extends Application {
         primaryStage.setTitle("S N A K E");
         primaryStage.getIcons().add(new Image(getClass().getResource("/SnakyWhite.png").toExternalForm()));
         primaryStage.setScene(sceneMenu);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
         App.root.getChildren().addAll(App.snake.getSnakeLengthArr());
