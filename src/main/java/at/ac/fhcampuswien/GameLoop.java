@@ -33,8 +33,11 @@ public class GameLoop {
                 spawnFood = true;
             }
 
+            //move the snake
             getInput();
             snakeMoved = true;
+
+            //check if GameOver or GameWon
             GameOver.snakeLeavesGameBoard();
             Win.GameWin();
             //Win.GameWin();
@@ -44,24 +47,21 @@ public class GameLoop {
                 GameOver.snakeHitItSelf();
             }
 
-
+            //add bodyPart if snake eats
             if (App.snake.snakeEats) {
                 //new food
                 food.deleteFood(App.root);
 
                 //add body part
                 App.snake.addBodyPart(App.root);
-
                 App.score++;
-
                 App.getNewScoreOnScreen();
 
             }
 
+            //Show Game Over Scene if GameOver
             if (GameOver.isGameOver) {
-
                 this.timeLine.stop();
-
                 App.paneGameOver.add(App.gameOverText, 0, 0, 3,2);
                 App.paneGameOver.setAlignment(Pos.CENTER);
                 GridPane.setHalignment(App.gameOverText, HPos.CENTER);
@@ -75,6 +75,7 @@ public class GameLoop {
                 App.root.getChildren().remove(App.scoreText);
             }
 
+            //Show Game Won Scene if GameWon
             if (Win.isGameWin) {
 
                 Win.isGameWin = false;
@@ -83,8 +84,6 @@ public class GameLoop {
 
                 App.paneWin.add(App.gameWinText, 0, 0, 3,2);
                 App.paneGameOver.setAlignment(Pos.CENTER);
-                // Wie schaff ich es, dass das gesamte Teil nicht immer wieder nach unten rutscht beim wiederholten
-                // ausführen???
 
                 App.paneWin.setHalignment(App.gameWinText, HPos.CENTER);
                 App.paneWin.add(App.playAgain, 0, 2, 1, 1);
@@ -101,6 +100,7 @@ public class GameLoop {
         timeLine.play();
     }
 
+    //gets the input from user to move the snake
     private void getInput() {
         if(snakeMoved){
             App.sceneGame.setOnKeyPressed(event -> {
@@ -152,7 +152,8 @@ public class GameLoop {
             } else {
                 System.out.println("File already exists.");
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -164,7 +165,8 @@ public class GameLoop {
             write.println(highScore);
             write.close();
             System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -173,23 +175,18 @@ public class GameLoop {
 
     private void readFile () {
 
-        try  {
+        try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
-            while (line != null)
-            {
+            while (line != null) {
                 try {
                     int isHighScoreOrNot = Integer.parseInt(line.trim());
-
-                    if (isHighScoreOrNot < App.score)
-                    {
+                    if (isHighScoreOrNot < App.score) {
                         highScore = App.score;
                     }
 
                     line = reader.readLine();
-                } catch (NumberFormatException e1) {
-
-                }
+                } catch (NumberFormatException e1) {}
 
             }
             reader.close();
@@ -198,5 +195,4 @@ public class GameLoop {
             System.err.println("ERROR reading scores from file");
         }
     }
-
 }
