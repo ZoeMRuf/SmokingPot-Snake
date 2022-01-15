@@ -15,30 +15,25 @@ import javafx.stage.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-
-
 import java.io.FileNotFoundException;
-
 import static javafx.scene.paint.Color.*;
 
 
 public class App extends Application {
 
-    //Alle Variablen die wir später brauchen
-    public static Snake snake;
-    public static GameOver gameOver;
-    public static int GameSize = 480;
-    public static int score = 0;
+    //Variables for later use
+    protected static Snake snake;
+    protected static GameLoop gameLoop;
+    protected static int GameSize = 480;
+    protected static int score = 0;
 
-    //GUI Variablen
-    public static Pane root;
-    public static GridPane paneGameOver, paneWin;
-    public static Scene sceneGame, sceneMenu, sceneGameOver;
-    public static GameLoop gameLoop;
-    public static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
-    public static Button playAgain, backToMenu;
-    public static boolean pressed = false;
-    public static HBox heightBox;
+    //GUI Variables
+    protected static Pane root;
+    protected static GridPane paneGameOver, paneWin;
+    protected static Scene sceneGame, sceneMenu;
+    protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
+    protected static Button playAgain, backToMenu;
+    protected static boolean pressed = false;
 
 
     public static void main(String[] args) {
@@ -48,15 +43,16 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
 
-        //Game Scene:
-        //Objekts that need to be created
-        VBox layoutGame = new VBox();
-        Label press = new Label("Press an arrow key\n   to continue");
-        root = new Pane();
+        //Objects needed to play the Game
+        snake = new Snake();
+        gameLoop = new GameLoop();
+        gameLoop.timeLine.stop();
 
+        //Game Scene:
+        VBox layoutGame = new VBox();
+        root = new Pane();
         scoreText = new Text();
         getNewScoreOnScreen();
-
 
         //Begin GameOver Scene inside of GameScene:
         paneGameOver = new GridPane();
@@ -83,7 +79,6 @@ public class App extends Application {
 
             score = 0;
             getNewScoreOnScreen();
-
 
             GameOver.gameOverPlayAgain = true;
         });
@@ -135,20 +130,16 @@ public class App extends Application {
         gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
         gameOverscoreText.setLayoutX(10);
         gameOverscoreText.setLayoutY(10);
-
         // End of Game Win inside of GameScene
 
+        //Show GameWon and Game Over
         layoutGame.getChildren().addAll(root, paneGameOver, paneWin);
         layoutGame.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
 
         sceneGame = new Scene(layoutGame, GameSize, GameSize);
 
-        snake = new Snake();
-        gameLoop = new GameLoop();
-        gameLoop.timeLine.stop();
 
         //Menu scene:
-
         Image snakyTest = new Image("/SnakyGreen.png");
         ImageView imgView = new ImageView();
         imgView.setImage(snakyTest);
@@ -163,15 +154,13 @@ public class App extends Application {
         Font startG = Font.font("Courier New", FontWeight.BOLD, 36);
         startGame.setFont(startG);
 
-        /*
+        /* Doesn't work just yet to show the High Score
         Button showHighScore = new Button("Show High-score");
         Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
         showHighScore.setFont(showHS);
-
          */
 
-        //Test for Win condition
-/*
+        /*Test for Win condition
         Button testWin = new Button("Test Win");
         Font showTestWin = Font.font("Courier New", FontWeight.BOLD, 16);
         testWin.setFont(showTestWin);
@@ -186,7 +175,8 @@ public class App extends Application {
         layoutMenuTest.setAlignment(Pos.CENTER);
         layoutMenuTest.setSpacing(10);
         score = 323;
-*/
+        */
+
         //Game Start
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
 
@@ -204,6 +194,7 @@ public class App extends Application {
         layoutMenu.setSpacing(10);
 
         //Pause Menu
+        Label press = new Label("Press an arrow key\n   to continue");
         Pane pauseMenu = new Pane();
         Button cont = new Button("Continue");
         Font contFont = Font.font("Courier New", FontWeight.BOLD, 30);
@@ -219,7 +210,6 @@ public class App extends Application {
         Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
         pauseMenu.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
         pauseMenu.getChildren().addAll(cont, home);
-        //home.setLayoutY(GameSize/17);
         press.setLayoutX(GameSize / 10);
         press.setLayoutY(GameSize / 3);
         press.setFont(startG);

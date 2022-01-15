@@ -1,37 +1,30 @@
 package at.ac.fhcampuswien;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
-
 import java.io.*;
-import java.util.Scanner;
-
 import static javafx.scene.paint.Color.rgb;
 
 public class GameLoop {
 
     public Timeline timeLine;
-    public double tickTime = 150; // * App.score * 20 time dynamisch verändern?
+    private final double TICKTIME = 150; // * App.score * 20 time dynamisch verändern?
     private boolean spawnFood = false;
     public static Food food = new Food();
     public static boolean snakeMoved = true;
     public static boolean paused = false;
-    public File file;
-    public int highScore;
+    private File file;
+    private int highScore;
 
 
     public GameLoop() {
-        this.timeLine = new Timeline(new KeyFrame(Duration.millis(tickTime),event -> {
+        this.timeLine = new Timeline(new KeyFrame(Duration.millis(TICKTIME), event -> {
             //what needs to be repeated for the game to work
 
             //set first food
