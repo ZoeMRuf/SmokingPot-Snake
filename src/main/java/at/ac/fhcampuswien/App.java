@@ -67,7 +67,7 @@ public class App extends Application {
 
 
         playAgain = new Button("Play again");
-        Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 17);
+        Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 15);
         playAgain.setFont(playAgainFont);
         //Pane root = new Pane();
         playAgain.setLayoutX(10);
@@ -89,7 +89,7 @@ public class App extends Application {
         });
 
         backToMenu = new Button("Back to Menu");
-        Font btmFont = Font.font("Courier New", FontWeight.BOLD, 17);
+        Font btmFont = Font.font("Courier New", FontWeight.BOLD, 15);
         backToMenu.setFont(btmFont);
         backToMenu.setLayoutX(10);
         backToMenu.setLayoutY(10);
@@ -162,9 +162,13 @@ public class App extends Application {
         Button startGame = new Button("Start the Game");
         Font startG = Font.font("Courier New", FontWeight.BOLD, 36);
         startGame.setFont(startG);
+
+        /*
         Button showHighScore = new Button("Show High-score");
         Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
         showHighScore.setFont(showHS);
+
+         */
 
         //Test for Win condition
 /*
@@ -193,7 +197,7 @@ public class App extends Application {
         });
 
         VBox layoutMenu = new VBox();
-        layoutMenu.getChildren().addAll(imgView, label, startGame, showHighScore);
+        layoutMenu.getChildren().addAll(imgView, label, startGame); //, showHighScore
         sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
         layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN, null, null)));
         layoutMenu.setAlignment(Pos.CENTER);
