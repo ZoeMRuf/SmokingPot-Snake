@@ -159,17 +159,18 @@ public class GameLoop {
         }
         readFile();
 
-        //write into file
+
+            //write into file
         try {
             PrintWriter write = new PrintWriter(file);
             write.println(highScore);
             write.close();
             System.out.println("Successfully wrote to the file.");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+
 
     }
 
@@ -181,8 +182,10 @@ public class GameLoop {
             while (line != null) {
                 try {
                     int isHighScoreOrNot = Integer.parseInt(line.trim());
-                    if (isHighScoreOrNot < App.score) {
+                    if ((isHighScoreOrNot < App.score) && (App.score != 0)) {
                         highScore = App.score;
+                    } else {
+                        highScore = isHighScoreOrNot;
                     }
 
                     line = reader.readLine();
