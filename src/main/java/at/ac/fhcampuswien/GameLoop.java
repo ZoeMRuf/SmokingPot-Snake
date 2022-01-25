@@ -39,8 +39,8 @@ public class GameLoop {
 
             //check if GameOver or GameWon
             GameOver.snakeLeavesGameBoard();
-            Win.GameWin();
-            //Win.GameWin();
+            GameOver.GameWon();
+
             if(!GameOver.isGameOver) {
                 App.snake.moveSnake();
                 App.snake.doesSnakeEat();
@@ -76,9 +76,9 @@ public class GameLoop {
             }
 
             //Show Game Won Scene if GameWon
-            if (Win.isGameWin) {
+            if (GameOver.isGameWon) {
 
-                Win.isGameWin = false;
+                GameOver.isGameWon = false;
                 System.out.println("You Won!");
                 timeLine.stop();
 

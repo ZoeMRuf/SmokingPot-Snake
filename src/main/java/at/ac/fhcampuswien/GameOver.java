@@ -3,10 +3,11 @@ import javafx.scene.shape.Rectangle;
 
 public class GameOver {
     public static boolean isGameOver = false;
+    public static boolean isGameWon = false;
     public static boolean gameOverPlayAgain = false;
 
     /*
-    All static Methods to check if the Game is Over no constructor necessary
+    All static Methods to check if the Game is Over or Won no constructor necessary
      */
 
     public static boolean snakeHitItSelf() {
@@ -50,4 +51,12 @@ public class GameOver {
         }
         return isGameOver;
     }
+
+    public static boolean GameWon() {
+        if (App.score == 324-1) {
+            isGameWon = true;
+        }
+        return isGameWon;
+    }
+
 }
