@@ -14,10 +14,8 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import java.io.FileNotFoundException;
 import static javafx.scene.paint.Color.*;
-
 
 public class App extends Application {
 
@@ -34,7 +32,6 @@ public class App extends Application {
     protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
     protected static Button playAgain, backToMenu;
     protected static boolean pressed = false;
-
 
     public static void main(String[] args) {
         launch(args);
@@ -60,7 +57,6 @@ public class App extends Application {
         paneGameOver.setHgap(20);
         paneGameOver.setVgap(50);
         paneGameOver.setPadding(new Insets(10, 10, 10, 10));
-
 
         playAgain = new Button("Play again");
         Font playAgainFont = Font.font("Courier New", FontWeight.BOLD, 15);
@@ -100,7 +96,6 @@ public class App extends Application {
 
             score = 0;
             getNewScoreOnScreen();
-
 
             GameOver.gameOverPlayAgain = true;
             primaryStage.setScene(sceneMenu);
