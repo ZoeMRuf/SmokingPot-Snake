@@ -52,7 +52,7 @@ public class GameOver {
         return isGameOver;
     }
 
-    public static boolean GameWon() {
+    public static boolean gameWon() {
         if (App.score == 324-1) {
             isGameWon = true;
         }

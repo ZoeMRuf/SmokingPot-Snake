@@ -39,7 +39,7 @@ public class GameLoop {
 
             //check if GameOver or GameWon
             GameOver.snakeLeavesGameBoard();
-            GameOver.GameWon();
+            GameOver.gameWon();
 
             if(!GameOver.isGameOver) {
                 App.snake.moveSnake();
