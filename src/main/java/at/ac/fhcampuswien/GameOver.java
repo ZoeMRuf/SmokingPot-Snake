@@ -53,7 +53,7 @@ public class GameOver {
     }
 
     public static boolean gameWon() {
-        if (App.score == 2) {
+        if (App.score == Snake.scale * Snake.scale-1) {
             isGameWon = true;
         }
         return isGameWon;

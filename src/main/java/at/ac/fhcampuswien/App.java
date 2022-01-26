@@ -286,9 +286,13 @@ public class App extends Application {
 
             switch (key.getCode()) {
                 case DOWN:
+                case S:
                 case LEFT:
+                case A:
                 case RIGHT:
+                case D:
                 case UP:
+                case W:
                     if (GameLoop.paused) {
                         gameLoop.timeLine.play();
                         GameLoop.paused = false;

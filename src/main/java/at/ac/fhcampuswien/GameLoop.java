@@ -110,24 +110,28 @@ public class GameLoop {
             App.sceneGame.setOnKeyPressed(event -> {
                 switch(event.getCode()) {
                     case RIGHT:
+                    case D:
                         if (App.snake.getDirection() != 'L' && snakeMoved){
                             App.snake.setDirection('R');
                             snakeMoved = false;
                         }
                         break;
                     case LEFT:
+                    case A:
                         if (App.snake.getDirection() != 'R' && snakeMoved){
                             App.snake.setDirection('L');
                             snakeMoved = false;
                         }
                         break;
                     case UP:
+                    case W:
                         if (App.snake.getDirection() != 'D' && snakeMoved){
                             App.snake.setDirection('U');
                             snakeMoved = false;
                         }
                         break;
                     case DOWN:
+                    case S:
                         if (App.snake.getDirection() != 'U' && snakeMoved){
                             App.snake.setDirection('D');
                             snakeMoved = false;
