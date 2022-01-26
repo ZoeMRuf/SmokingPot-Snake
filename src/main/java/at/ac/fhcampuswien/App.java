@@ -136,7 +136,7 @@ public class App extends Application {
             root.getChildren().remove(Food.food);
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
-            GameOver.isGameOver = false;
+            GameOver.isGameWon = false;
             paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
             root.getChildren().add(scoreText);
 
@@ -154,7 +154,7 @@ public class App extends Application {
             root.getChildren().removeAll(snake.getSnakeLengthArr());
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
-            GameOver.isGameOver = false;
+            GameOver.isGameWon = false;
             paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
             root.getChildren().add(scoreText);
             root.getChildren().removeAll(Food.food);
@@ -225,7 +225,7 @@ public class App extends Application {
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
 
         sceneGame.setOnKeyReleased(event -> {
-            if (!GameOver.isGameOver) {
+            if (!GameOver.isGameOver && !GameOver.isGameWon) {
                 gameLoop.timeLine.play();
             }
         });

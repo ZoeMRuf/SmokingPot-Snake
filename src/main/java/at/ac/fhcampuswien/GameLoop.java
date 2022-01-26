@@ -77,8 +77,6 @@ public class GameLoop {
 
             //Show Game Won Scene if GameWon
             if (GameOver.isGameWon) {
-
-                GameOver.isGameWon = false;
                 System.out.println("You Won!");
                 timeLine.stop();
 
