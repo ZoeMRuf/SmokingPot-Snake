@@ -30,7 +30,7 @@ public class App extends Application {
     protected static Pane root;
     protected static GridPane paneGameOver, paneWin;
     protected static Scene sceneGame, sceneMenu, sceneHighScore;
-    protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText, textHighscore;
+    protected static Text scoreText, gameOverText, gameOverScoreText, gameWinText, textHighscore;
     protected static Button playAgain, backToMenu, playAgainWin, backToMenuWin, backToMenu2;
     private static boolean pressed = false;
 
@@ -71,7 +71,7 @@ public class App extends Application {
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
             GameOver.isGameOver = false;
-            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
+            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverScoreText, gameOverText);
             root.getChildren().add(scoreText);
 
             score = 0;
@@ -90,7 +90,7 @@ public class App extends Application {
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
             GameOver.isGameOver = false;
-            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverscoreText, gameOverText);
+            paneGameOver.getChildren().removeAll(playAgain, backToMenu, gameOverScoreText, gameOverText);
             root.getChildren().add(scoreText);
             root.getChildren().removeAll(Food.food);
             Food.spawnedFood = true;
@@ -121,11 +121,11 @@ public class App extends Application {
         gameWinText.setFill(rgb(3, 150, 3));
         gameWinText.setLayoutX(10);
         gameWinText.setLayoutY(10);
-        gameOverscoreText = new Text("Score: " + score);
-        gameOverscoreText.setFill(rgb(255, 3, 3));
-        gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-        gameOverscoreText.setLayoutX(10);
-        gameOverscoreText.setLayoutY(10);
+        gameOverScoreText = new Text("Score: " + score);
+        gameOverScoreText.setFill(rgb(255, 3, 3));
+        gameOverScoreText.setFont(Font.font("Courier New", Snake.scale));
+        gameOverScoreText.setLayoutX(10);
+        gameOverScoreText.setLayoutY(10);
 
 
         playAgainWin = new Button("Play again");
@@ -138,7 +138,7 @@ public class App extends Application {
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
             GameOver.isGameWon = false;
-            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
+            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverScoreText, gameWinText);
             root.getChildren().add(scoreText);
 
             score = 0;
@@ -156,7 +156,7 @@ public class App extends Application {
             snake = new Snake();
             root.getChildren().addAll(snake.getSnakeLengthArr());
             GameOver.isGameWon = false;
-            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
+            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverScoreText, gameWinText);
             root.getChildren().add(scoreText);
             root.getChildren().removeAll(Food.food);
             Food.spawnedFood = true;

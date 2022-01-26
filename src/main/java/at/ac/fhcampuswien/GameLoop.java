@@ -73,9 +73,9 @@ public class GameLoop {
                 App.paneGameOver.add(App.backToMenu, 2, 2, 1, 1);
                 //to get current Score in GameOverscoreText:
                 forHighscore();
-                getGameOverscoreText();
-                App.gameOverscoreText.setFill(rgb(255, 3, 3));
-                App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
+                getGameOverScoreText();
+                App.gameOverScoreText.setFill(rgb(255, 3, 3));
+                App.paneGameOver.add(App.gameOverScoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
 
                 //for SceneHighScore
@@ -98,9 +98,9 @@ public class GameLoop {
                 App.paneWin.add(App.playAgainWin, 0, 2, 1, 1);
                 App.paneWin.add(App.backToMenuWin, 2, 2, 1, 1);
                 forHighscore();
-                getGameOverscoreText();
-                App.gameOverscoreText.setFill(rgb(30, 160, 98));
-                App.paneWin.add(App.gameOverscoreText, 1, 3, 1, 1);
+                getGameOverScoreText();
+                App.gameOverScoreText.setFill(rgb(30, 160, 98));
+                App.paneWin.add(App.gameOverScoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
 
                 //for SceneHighScore
@@ -159,11 +159,11 @@ public class GameLoop {
         }
     }
 
-    private void getGameOverscoreText() {
-        App.gameOverscoreText = new Text("Your score: " + App.score + "\nHigh score: " + highScore);
-        App.gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
-        App.gameOverscoreText.setLayoutX(10);
-        App.gameOverscoreText.setLayoutY(10);
+    private void getGameOverScoreText() {
+        App.gameOverScoreText = new Text("Your score: " + App.score + "\nHigh score: " + highScore);
+        App.gameOverScoreText.setFont(Font.font("Courier New", Snake.scale));
+        App.gameOverScoreText.setLayoutX(10);
+        App.gameOverScoreText.setLayoutY(10);
     }
 
     //method for everything about highscore - reference: https://www.w3schools.com/java/java_files_create.asp
