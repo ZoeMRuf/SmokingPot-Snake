@@ -168,7 +168,6 @@ public class App extends Application {
         });
 
 
-
         // End of Game Win inside of GameScene
 
         //Show GameWon and Game Over
