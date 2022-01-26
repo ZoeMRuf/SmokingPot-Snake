@@ -14,15 +14,14 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import java.io.FileNotFoundException;
 import static javafx.scene.paint.Color.*;
 
 public class App extends Application {
 
     //Variables for later use
     protected static Snake snake;
-    protected static GameLoop gameLoop;
-    protected static int GameSize = 480;
+    private static GameLoop gameLoop;
+    protected final static int GAME_SIZE = 480;
     protected static int score = 0;
 
     //GUI Variables
@@ -31,14 +30,14 @@ public class App extends Application {
     protected static Scene sceneGame, sceneMenu;
     protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
     protected static Button playAgain, backToMenu;
-    protected static boolean pressed = false;
+    private static boolean pressed = false;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
+    public void start(Stage primaryStage) {
 
         //Objects needed to play the Game
         snake = new Snake();
@@ -131,7 +130,7 @@ public class App extends Application {
         layoutGame.getChildren().addAll(root, paneGameOver, paneWin);
         layoutGame.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
 
-        sceneGame = new Scene(layoutGame, GameSize, GameSize);
+        sceneGame = new Scene(layoutGame, GAME_SIZE, GAME_SIZE);
 
 
         //Menu scene:
@@ -183,7 +182,7 @@ public class App extends Application {
 
         VBox layoutMenu = new VBox();
         layoutMenu.getChildren().addAll(imgView, label, startGame); //, showHighScore
-        sceneMenu = new Scene(layoutMenu, GameSize, GameSize);
+        sceneMenu = new Scene(layoutMenu, GAME_SIZE, GAME_SIZE);
         layoutMenu.setBackground(new Background(new BackgroundFill(DARKGREEN, null, null)));
         layoutMenu.setAlignment(Pos.CENTER);
         layoutMenu.setSpacing(10);
@@ -192,21 +191,19 @@ public class App extends Application {
         Label press = new Label("Press an arrow key\n   to continue");
         Pane pauseMenu = new Pane();
         Button cont = new Button("Continue");
-        Font contFont = Font.font("Courier New", FontWeight.BOLD, 30);
         cont.setFont(btmFont);
         cont.setLayoutX(190);
         cont.setLayoutY(150);
         Button home = new Button("Home");
-        Font homeFont = Font.font("Courier New", FontWeight.BOLD, 30);
         home.setFont(btmFont);
         home.setLayoutX(210);
         home.setLayoutY(250);
 
-        Scene pauseScene = new Scene(pauseMenu, GameSize, GameSize);
+        Scene pauseScene = new Scene(pauseMenu, GAME_SIZE, GAME_SIZE);
         pauseMenu.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
         pauseMenu.getChildren().addAll(cont, home);
-        press.setLayoutX(GameSize / 10);
-        press.setLayoutY(GameSize / 3);
+        press.setLayoutX(GAME_SIZE / 10);
+        press.setLayoutY(GAME_SIZE / 3);
         press.setFont(startG);
 
         cont.setOnAction(event -> {
@@ -288,7 +285,7 @@ public class App extends Application {
         scoreText.setTranslateX(0);
         scoreText.setText("Score: " + score);
         scoreText.setLayoutX(Snake.scale);
-        scoreText.setTranslateY(GameSize);
+        scoreText.setTranslateY(GAME_SIZE);
         root.getChildren().addAll(scoreText);
     }
 }

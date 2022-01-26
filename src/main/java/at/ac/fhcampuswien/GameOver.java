@@ -34,7 +34,7 @@ public class GameOver {
 
     public static boolean snakeLeavesGameBoard() {
 
-        int outOfGame = App.GameSize;
+        int outOfGame = App.GAME_SIZE;
 
         if (App.snake.getHead().getX() == (outOfGame - App.snake.GRID_SIZE) && App.snake.getDirection() == 'R') {
 

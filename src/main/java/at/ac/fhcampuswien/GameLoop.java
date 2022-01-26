@@ -17,7 +17,7 @@ public class GameLoop {
     private final double TICK_TIME = 150;
     private boolean spawnFood = false;
     public static Food food = new Food();
-    public static boolean snakeMoved = true;
+    private static boolean snakeMoved = true;
     public static boolean paused = false;
     private File file;
     private int highScore;

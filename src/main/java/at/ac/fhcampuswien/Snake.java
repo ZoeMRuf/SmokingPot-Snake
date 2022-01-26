@@ -1,7 +1,6 @@
 package at.ac.fhcampuswien;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.*;
 import javafx.scene.paint.ImagePattern;
@@ -10,8 +9,8 @@ import javafx.scene.shape.Rectangle;
 public class Snake extends Node {
     public static int scale = 20;
     private final static int START_SIZE = 2;
-    public final int GRID_SIZE = App.GameSize / scale;
-    public static int nowSnakeSize = START_SIZE;
+    public final int GRID_SIZE = App.GAME_SIZE / scale;
+    private static int nowSnakeSize = START_SIZE;
     private Rectangle[] snakeLengthArr = new Rectangle[nowSnakeSize];
     public boolean snakeEats;
 
@@ -27,12 +26,10 @@ public class Snake extends Node {
                 Image snakeHead = new Image("/SnakeHead.png");
                 ImagePattern imagePattern = new ImagePattern(snakeHead);
                 bodyPart.setFill(imagePattern);
-                ImageView imageView = new ImageView(snakeHead);
             } else {
                 Image snakeBody = new Image("/Snakebody.png");
                 ImagePattern imagePattern = new ImagePattern(snakeBody);
                 bodyPart.setFill(imagePattern);
-                ImageView imageView = new ImageView(snakeBody);
             }
 
             //Height and Width of Rectangles
@@ -78,7 +75,6 @@ public class Snake extends Node {
         Image snakeBody = new Image("/Snakebody.png");
         ImagePattern imagePattern = new ImagePattern(snakeBody);
         bodyPart.setFill(imagePattern);
-        ImageView imageView = new ImageView(snakeBody);
         bodyPart.setWidth(GRID_SIZE - 1);
         bodyPart.setHeight(GRID_SIZE - 1);
 

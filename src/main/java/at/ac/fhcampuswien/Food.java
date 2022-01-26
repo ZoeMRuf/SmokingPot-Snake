@@ -8,20 +8,20 @@ import java.util.Random;
 
 public class Food {
     protected static Rectangle food;
-    protected double foodScale = Snake.scale / 4;
+    private final double FOOD_SCALE = Snake.scale / 4;
     protected int foodX;
     protected int foodY;
-    protected boolean foodNotInSnake = true;
+    private boolean foodNotInSnake = true;
     protected static boolean spawnedFood = false;
     Random r = new Random();
     String[] foodPaths;
 
     public int getFoodX() {
-        return foodX = (int) (food.getX() - foodScale / 2);
+        return foodX = (int) (food.getX() - FOOD_SCALE / 2);
     }
 
     public int getFoodY() {
-        return foodY = (int) (food.getY() - foodScale / 2);
+        return foodY = (int) (food.getY() - FOOD_SCALE / 2);
     }
 
     public void setRandomFood(Pane pane) {
@@ -31,10 +31,10 @@ public class Food {
 
         //so food does not spawn outside of GameBoard
         do {
-            randomX = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + foodScale / 2;
-            randomY = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + foodScale / 2;
+            randomX = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + FOOD_SCALE / 2;
+            randomY = r.nextInt(Snake.scale) * App.snake.GRID_SIZE + FOOD_SCALE / 2;
         }
-        while (randomX < 0 || randomX >= App.GameSize || randomY < 0 || randomY >= App.GameSize);
+        while (randomX < 0 || randomX >= App.GAME_SIZE || randomY < 0 || randomY >= App.GAME_SIZE);
 
         //Image for Food
         food = new Rectangle(App.snake.GRID_SIZE - 2, App.snake.GRID_SIZE - 2);
