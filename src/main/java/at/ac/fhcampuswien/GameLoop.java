@@ -100,6 +100,10 @@ public class GameLoop {
         timeLine.play();
     }
 
+    public int getHighScore() {
+        return highScore;
+    }
+
     //gets the input from user to move the snake
     private void getInput() {
         if(snakeMoved){
