@@ -30,6 +30,10 @@ public class GameLoop {
             //set first food
             if (!spawnFood){
                 food.setRandomFood(App.root);
+                if ((food.foodX == App.snake.getHead().getX() && food.foodY == App.snake.getHead().getY()) || (food.foodX
+                        == App.snake.getHead().getX() && food.foodY == App.snake.getHead().getY()-App.snake.GRID_SIZE)){
+                    food.deleteFood(App.root);
+                }
                 spawnFood = true;
             }
 
@@ -104,7 +108,6 @@ public class GameLoop {
                 App.textHighscore = textHighscoreNew;
                 App.layoutHighScore.getChildren().remove(App.textHighscore);
                 App.layoutHighScore.getChildren().addAll(App.textHighscore);
-                App.sceneHighScore.
             }
 
         }));

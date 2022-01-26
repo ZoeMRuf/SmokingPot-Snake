@@ -53,6 +53,7 @@ public class GameOver {
             App.snake.getHead().setRotate(180);
             isGameOver = true;
         }
+
         return isGameOver;
     }
 
