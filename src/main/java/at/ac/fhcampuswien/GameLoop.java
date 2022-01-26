@@ -79,9 +79,8 @@ public class GameLoop {
                 App.root.getChildren().remove(App.scoreText);
 
                 //for SceneHighScore
-                Text textHighscoreNew = new Text("Highscore: " + highScore);
-                App.textHighscore = textHighscoreNew;
                 App.layoutHighScore.getChildren().remove(App.textHighscore);
+                App.textHighscore.setText("Highscore: " + highScore);
                 App.layoutHighScore.getChildren().addAll(App.textHighscore);
 
             }
