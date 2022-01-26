@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -157,18 +158,20 @@ public class App extends Application {
 
         // HighscoreScene
         VBox layoutHighScore = new VBox();
-        Label labelHighscore = new Label("Highscore: " + gameLoop.getHighScore());
-        Font fontHighscore = Font.font("Courier New", FontWeight.BOLD, 23);
-        labelHighscore.setFont(fontHighscore);
-        labelHighscore.setLayoutX(GAME_SIZE / 10);
-        labelHighscore.setLayoutY(GAME_SIZE / 3);
-        labelHighscore.setAlignment(Pos.CENTER);
+        Text textHighscore = new Text("Highscore: " + gameLoop.getHighScore());
+        Font fontHighscore = Font.font("Courier New", FontWeight.BOLD, 40);
+        textHighscore.setFont(fontHighscore);
+        textHighscore.setFill(rgb(0, 100, 0));
+        textHighscore.setStrokeWidth(0.5);
+        textHighscore.setStroke(Color.rgb(75, 251, 75));
+        textHighscore.setLayoutX(GAME_SIZE / 10);
+        textHighscore.setLayoutY(GAME_SIZE / 3);
         Button backToMenu2 = new Button("Back to Menu");
         Font btm2Font = Font.font("Courier New", FontWeight.BOLD, 15);
         backToMenu2.setFont(btm2Font);
         backToMenu2.setAlignment(Pos.BOTTOM_CENTER);
         backToMenu2.setOnAction(event -> primaryStage.setScene(sceneMenu));
-        layoutHighScore.getChildren().addAll(labelHighscore, backToMenu2);
+        layoutHighScore.getChildren().addAll(textHighscore, backToMenu2);
         layoutHighScore.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
         layoutHighScore.setSpacing(10);
         layoutHighScore.setAlignment(Pos.CENTER);
