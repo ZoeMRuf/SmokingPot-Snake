@@ -273,6 +273,10 @@ public class App extends Application {
             root.getChildren().addAll(snake.getSnakeLengthArr());
             score = 0;
             getNewScoreOnScreen();
+
+            root.getChildren().removeAll(Food.food); //test
+            GameOver.gameOverPlayAgain = true;
+
             primaryStage.setScene(sceneMenu);
         });
 
