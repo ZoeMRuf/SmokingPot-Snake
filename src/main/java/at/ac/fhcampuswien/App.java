@@ -148,28 +148,11 @@ public class App extends Application {
         Font startG = Font.font("Courier New", FontWeight.BOLD, 36);
         startGame.setFont(startG);
 
-        /* Doesn't work just yet to show the High Score
+        // Doesn't work just yet to show the High Score
         Button showHighScore = new Button("Show High-score");
         Font showHS = Font.font("Courier New", FontWeight.BOLD, 16);
         showHighScore.setFont(showHS);
-         */
 
-        /*Test for Win condition
-        Button testWin = new Button("Test Win");
-        Font showTestWin = Font.font("Courier New", FontWeight.BOLD, 16);
-        testWin.setFont(showTestWin);
-        testWin.setOnKeyReleased(event -> score = 323);
-
-        testWin.setOnAction(event -> primaryStage.setScene(sceneGame));
-        App.sceneGame.setOnKeyReleased(event -> gameLoop.timeLine.play());
-        VBox layoutMenuTest = new VBox();
-        layoutMenuTest.getChildren().addAll(imgView, label, startGame, showHighScore, testWin);
-        sceneMenu = new Scene(layoutMenuTest, GameSize, GameSize);
-        layoutMenuTest.setBackground(new Background(new BackgroundFill(DARKGREEN,null,null)));
-        layoutMenuTest.setAlignment(Pos.CENTER);
-        layoutMenuTest.setSpacing(10);
-        score = 323;
-        */
 
         //Game Start
         startGame.setOnAction(event -> primaryStage.setScene(sceneGame));
