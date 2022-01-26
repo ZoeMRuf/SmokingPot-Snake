@@ -29,7 +29,7 @@ public class App extends Application {
     protected static GridPane paneGameOver, paneWin;
     protected static Scene sceneGame, sceneMenu, sceneHighScore;
     protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
-    protected static Button playAgain, backToMenu;
+    protected static Button playAgain, backToMenu, playAgainWin, backToMenuWin;
     private static boolean pressed = false;
 
     public static void main(String[] args) {
@@ -124,6 +124,50 @@ public class App extends Application {
         gameOverscoreText.setFont(Font.font("Courier New", Snake.scale));
         gameOverscoreText.setLayoutX(10);
         gameOverscoreText.setLayoutY(10);
+
+
+        playAgainWin = new Button("Play again");
+        playAgainWin.setFont(playAgainFont);
+        playAgainWin.setLayoutX(10);
+        playAgainWin.setLayoutY(10);
+        playAgainWin.setOnAction(event -> {
+            root.getChildren().removeAll(snake.getSnakeLengthArr());
+            root.getChildren().remove(Food.food);
+            snake = new Snake();
+            root.getChildren().addAll(snake.getSnakeLengthArr());
+            GameOver.isGameOver = false;
+            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
+            root.getChildren().add(scoreText);
+
+            score = 0;
+            getNewScoreOnScreen();
+
+            GameOver.gameOverPlayAgain = true;
+        });
+
+        backToMenuWin = new Button("Back to Menu");
+        backToMenuWin.setFont(btmFont);
+        backToMenuWin.setLayoutX(10);
+        backToMenuWin.setLayoutY(10);
+        backToMenuWin.setOnAction(event -> {
+            root.getChildren().removeAll(snake.getSnakeLengthArr());
+            snake = new Snake();
+            root.getChildren().addAll(snake.getSnakeLengthArr());
+            GameOver.isGameOver = false;
+            paneWin.getChildren().removeAll(playAgainWin, backToMenuWin, gameOverscoreText, gameWinText);
+            root.getChildren().add(scoreText);
+            root.getChildren().removeAll(Food.food);
+            Food.spawnedFood = true;
+
+            score = 0;
+            getNewScoreOnScreen();
+
+            GameOver.gameOverPlayAgain = true;
+            primaryStage.setScene(sceneMenu);
+        });
+
+
+
         // End of Game Win inside of GameScene
 
         //Show GameWon and Game Over

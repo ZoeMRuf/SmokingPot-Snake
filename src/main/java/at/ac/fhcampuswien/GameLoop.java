@@ -86,8 +86,8 @@ public class GameLoop {
                 App.paneGameOver.setAlignment(Pos.CENTER);
 
                 App.paneWin.setHalignment(App.gameWinText, HPos.CENTER);
-                App.paneWin.add(App.playAgain, 0, 2, 1, 1);
-                App.paneWin.add(App.backToMenu, 2, 2, 1, 1);
+                App.paneWin.add(App.playAgainWin, 0, 2, 1, 1);
+                App.paneWin.add(App.backToMenuWin, 2, 2, 1, 1);
                 forHighscore();
                 getGameOverscoreText();
                 App.gameOverscoreText.setFill(rgb(30, 160, 98));
