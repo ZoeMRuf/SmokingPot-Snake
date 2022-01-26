@@ -26,11 +26,12 @@ public class App extends Application {
     protected static int score = 0;
 
     //GUI Variables
+    protected static VBox layoutHighScore;
     protected static Pane root;
     protected static GridPane paneGameOver, paneWin;
     protected static Scene sceneGame, sceneMenu, sceneHighScore;
     protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText, textHighscore;
-    protected static Button playAgain, backToMenu, playAgainWin, backToMenuWin;
+    protected static Button playAgain, backToMenu, playAgainWin, backToMenuWin, backToMenu2;
     private static boolean pressed = false;
 
     public static void main(String[] args) {
@@ -200,7 +201,7 @@ public class App extends Application {
 
 
         // HighscoreScene
-        VBox layoutHighScore = new VBox();
+        layoutHighScore = new VBox();
         textHighscore = new Text("Highscore: " + gameLoop.getHighScore());
         Font fontHighscore = Font.font("Courier New", FontWeight.BOLD, 40);
         textHighscore.setFont(fontHighscore);
@@ -209,7 +210,7 @@ public class App extends Application {
         textHighscore.setStroke(Color.rgb(75, 251, 75));
         textHighscore.setLayoutX(GAME_SIZE / 10);
         textHighscore.setLayoutY(GAME_SIZE / 3);
-        Button backToMenu2 = new Button("Back to Menu");
+        backToMenu2 = new Button("Back to Menu");
         Font btm2Font = Font.font("Courier New", FontWeight.BOLD, 15);
         backToMenu2.setFont(btm2Font);
         backToMenu2.setAlignment(Pos.BOTTOM_CENTER);

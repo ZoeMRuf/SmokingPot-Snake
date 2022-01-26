@@ -77,6 +77,9 @@ public class GameLoop {
                 //for SceneHighScore
                 Text textHighscoreNew = new Text("Highscore: " + highScore);
                 App.textHighscore = textHighscoreNew;
+                App.layoutHighScore.getChildren().remove(App.textHighscore);
+                App.layoutHighScore.getChildren().addAll(App.textHighscore);
+
             }
 
             //Show Game Won Scene if GameWon
@@ -99,6 +102,9 @@ public class GameLoop {
                 //for SceneHighScore
                 Text textHighscoreNew = new Text("Highscore: " + highScore);
                 App.textHighscore = textHighscoreNew;
+                App.layoutHighScore.getChildren().remove(App.textHighscore);
+                App.layoutHighScore.getChildren().addAll(App.textHighscore);
+                App.sceneHighScore.
             }
 
         }));
