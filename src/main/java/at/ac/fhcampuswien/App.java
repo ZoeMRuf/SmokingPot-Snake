@@ -29,7 +29,7 @@ public class App extends Application {
     protected static Pane root;
     protected static GridPane paneGameOver, paneWin;
     protected static Scene sceneGame, sceneMenu, sceneHighScore;
-    protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText;
+    protected static Text scoreText, gameOverText, gameOverscoreText, gameWinText, textHighscore;
     protected static Button playAgain, backToMenu, playAgainWin, backToMenuWin;
     private static boolean pressed = false;
 
@@ -201,7 +201,7 @@ public class App extends Application {
 
         // HighscoreScene
         VBox layoutHighScore = new VBox();
-        Text textHighscore = new Text("Highscore: " + gameLoop.getHighScore());
+        textHighscore = new Text("Highscore: " + gameLoop.getHighScore());
         Font fontHighscore = Font.font("Courier New", FontWeight.BOLD, 40);
         textHighscore.setFont(fontHighscore);
         textHighscore.setFill(rgb(0, 100, 0));

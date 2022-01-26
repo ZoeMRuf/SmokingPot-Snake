@@ -73,6 +73,10 @@ public class GameLoop {
                 App.gameOverscoreText.setFill(rgb(255, 3, 3));
                 App.paneGameOver.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
+
+                //for SceneHighScore
+                Text textHighscoreNew = new Text("Highscore: " + highScore);
+                App.textHighscore = textHighscoreNew;
             }
 
             //Show Game Won Scene if GameWon
@@ -91,6 +95,10 @@ public class GameLoop {
                 App.gameOverscoreText.setFill(rgb(30, 160, 98));
                 App.paneWin.add(App.gameOverscoreText, 1, 3, 1, 1);
                 App.root.getChildren().remove(App.scoreText);
+
+                //for SceneHighScore
+                Text textHighscoreNew = new Text("Highscore: " + highScore);
+                App.textHighscore = textHighscoreNew;
             }
 
         }));
