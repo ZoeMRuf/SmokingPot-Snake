@@ -37,7 +37,7 @@ public class Snake extends Node {
             bodyPart.setWidth(GRID_SIZE - 1);
 
             bodyPart.setX(GRID_SIZE * (scale / 2));
-            bodyPart.setY(GRID_SIZE * scale / 2 * (nowSnakeSize - 1) - i * GRID_SIZE);
+            bodyPart.setY(GRID_SIZE * (nowSnakeSize - 1) - i * GRID_SIZE + GRID_SIZE * scale / 2);
             snakeLengthArr[i] = bodyPart;
         }
     }
