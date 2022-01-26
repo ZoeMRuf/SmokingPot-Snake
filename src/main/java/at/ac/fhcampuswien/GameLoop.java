@@ -80,7 +80,7 @@ public class GameLoop {
 
                 GameOver.isGameWon = false;
                 System.out.println("You Won!");
-                timeLine.stop();
+                this.timeLine.stop();
 
                 App.paneWin.add(App.gameWinText, 0, 0, 3,2);
                 App.paneGameOver.setAlignment(Pos.CENTER);
@@ -101,6 +101,8 @@ public class GameLoop {
     }
 
     public int getHighScore() {
+        forHighscore();
+        readFile();
         return highScore;
     }
 
@@ -178,7 +180,7 @@ public class GameLoop {
 
     }
 
-    private void readFile () {
+    public void readFile () {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
