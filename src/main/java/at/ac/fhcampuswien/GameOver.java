@@ -38,15 +38,19 @@ public class GameOver {
 
         if (App.snake.getHead().getX() == (outOfGame - App.snake.GRID_SIZE) && App.snake.getDirection() == 'R') {
 
+            App.snake.getHead().setRotate(-90);
             isGameOver = true;
         } else if (App.snake.getHead().getY() == (outOfGame - App.snake.GRID_SIZE) && App.snake.getDirection() == 'D') {
 
+            App.snake.getHead().setRotate(0);
             isGameOver = true;
-
         } else if (App.snake.getHead().getX() == 0 && App.snake.getDirection() == 'L' ) {
-            isGameOver = true;
 
+            App.snake.getHead().setRotate(90);
+            isGameOver = true;
         }else if(App.snake.getHead().getY() == 0 && App.snake.getDirection() == 'U'){
+
+            App.snake.getHead().setRotate(180);
             isGameOver = true;
         }
         return isGameOver;
