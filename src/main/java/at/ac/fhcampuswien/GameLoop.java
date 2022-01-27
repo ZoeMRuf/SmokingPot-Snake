@@ -47,12 +47,12 @@ public class GameLoop {
 
             if(!GameOver.isGameOver) {
                 App.snake.moveSnake();
-                App.snake.doesSnakeEat();
+                App.snake.snakeEats();
                 GameOver.snakeHitItSelf();
             }
 
             //add bodyPart if snake eats
-            if (App.snake.snakeEats) {
+            if (App.snake.doesSnakeEat) {
                 //new food
                 food.deleteFood(App.root);
 

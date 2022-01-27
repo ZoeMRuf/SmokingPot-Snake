@@ -12,7 +12,7 @@ public class Snake extends Node {
     public final int GRID_SIZE = App.GAME_SIZE / scale;
     private static int nowSnakeSize = START_SIZE;
     private Rectangle[] snakeLengthArr = new Rectangle[nowSnakeSize];
-    public boolean snakeEats;
+    public boolean doesSnakeEat;
 
     private char direction = 'D';
 
@@ -122,8 +122,8 @@ public class Snake extends Node {
         }
     }
 
-    public void doesSnakeEat() {
-        snakeEats = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
+    public void snakeEats() {
+        doesSnakeEat = ((this.getHead().getX() == (GameLoop.food.getFoodX())) && (this.getHead().getY() ==
                 (GameLoop.food.getFoodY())));
     }
 }
