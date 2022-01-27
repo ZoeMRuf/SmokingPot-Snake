@@ -52,23 +52,27 @@ public class Food {
         pane.getChildren().remove(food);
 
         //set new food after old one is deleted
-        this.setRandomFood(App.root);
+        if (App.score != Snake.scale * Snake.scale - 2) {
+            this.setRandomFood(App.root);
 
-        //Makes sure that no food spawns inside the snake
-        do {
-            for (int i = 0; i < App.snake.getSnakeLengthArr().length; i++) {
-                if (App.snake.getSnakeLengthArr()[i].getX() == this.getFoodX() &&
-                        App.snake.getSnakeLengthArr()[i].getY() == this.getFoodY()) {
-                    pane.getChildren().remove(food);
-                    this.setRandomFood(App.root);
-                    if (!foodNotInSnake)
-                        foodNotInSnake = true;
-                    break;
+            //Makes sure that no food spawns inside the snake
+            do {
+                for (int i = 0; i < App.snake.getSnakeLengthArr().length; i++) {
+                    if (App.snake.getSnakeLengthArr()[i].getX() == this.getFoodX() &&
+                            App.snake.getSnakeLengthArr()[i].getY() == this.getFoodY()) {
+                        pane.getChildren().remove(food);
+                        this.setRandomFood(App.root);
+                        if (!foodNotInSnake)
+                            foodNotInSnake = true;
+                        break;
+                    }
+                    foodNotInSnake = false;
                 }
-                foodNotInSnake = false;
-            }
-        } while (foodNotInSnake);
-        foodNotInSnake = true;
+            } while (foodNotInSnake);
+            foodNotInSnake = true;
+        }else{
+            GameOver.gameWon();
+        }
     }
 }
 
