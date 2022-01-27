@@ -70,8 +70,6 @@ public class Food {
                 }
             } while (foodNotInSnake);
             foodNotInSnake = true;
-        }else{
-            GameOver.gameWon();
         }
     }
 }
