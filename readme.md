@@ -8,7 +8,7 @@ Open gradle Window:
 - Click on Start Game
 
 
-- To change the direction of  your Snake use your Cursor Control keys (up, down, left, right)
+- To change the direction of  your Snake use your Cursor Control keys (up, down, left, right) - or use A, W, S and D on your keyboard
 
 
 - To pause the game or go back to Home press [Esc]
